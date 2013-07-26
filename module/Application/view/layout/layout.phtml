@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <?php echo $this->headTitle('Zend\Together')->setSeparator(' - ')->setAutoEscape(false); ?>
+        <meta name="description" content="Website of the Zend\Together conference">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<?php
+    echo $this->headLink()
+        ->prependStylesheet($this->basePath('css/main.css'))
+        ->setIndent(8);
+?>
+    </head>
+    <body>
+        <header id="header">
+        </header>
+
+        <?php echo $this->content; ?>
+
+        <footer id="footer">
+        </footer>
+    </body>
+</html>
