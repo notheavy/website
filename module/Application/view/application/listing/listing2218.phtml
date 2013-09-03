@@ -1,0 +1,49 @@
+<?php 
+/**
+ * Website Zend\Together
+ *
+ * @package    Application
+ * @author     Ralf Eggert <r.eggert@travello.de>
+ * * @link       http://www.zf-together.com
+ */
+
+/**
+ * Listing 22.18 view script
+ * 
+ * @package    Application
+ */
+
+$this->headTitle('Listing 22.18');
+$this->pageTitle('Listing 22.18');
+?>
+<h3>Neue <code>basketAction()</code> Aktionsmethode im <code>PizzaController</code></h3>
+<pre>
+&lt;?php
+namespace Pizza\Controller;
+
+use Zend\View\Model\ViewModel;
+use Zend\Mvc\Controller\AbstractActionController;
+use Pizza\Service\PizzaServiceInterface;
+
+class PizzaController extends AbstractActionController
+{
+    [...]
+    
+    public function basketAction()
+    {
+        $id = $this->params()->fromRoute('id');
+        
+        $pizzaData = $this->getPizzaService()->fetchSingleById($id);
+        
+        if (!$pizzaData) {
+            return $this->redirect()->toRoute('pizza');
+        }
+        
+        $this->shopBasket()->add($pizzaData);
+        
+        return $this->redirect()->toRoute(
+            'pizza/url', array('url' => $pizzaData->getUrl())
+        );
+    }
+}
+</pre>

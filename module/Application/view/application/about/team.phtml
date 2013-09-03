@@ -1,0 +1,27 @@
+<?php 
+/**
+ * Website Zend\Together
+ *
+ * @package    Application
+ * @author     Ralf Eggert <r.eggert@travello.de>
+ * * @link       http://www.zf-together.com
+ */
+
+/**
+ * Team view script
+ * 
+ * @package    Application
+ */
+
+$this->headTitle('Ihr Team');
+$this->pageTitle('Ihr Team ist immer für Sie da');
+
+$url = $this->url('application', array(), array(), true);
+?>
+<?php if ($this->getHelperPluginManager()->has('commentShowLinks')) : ?>
+<?php echo $this->commentShowLinks($url); ?>
+<?php endif; ?>
+<?php echo $this->cmsContentBlock('application_about_team', $url); ?>
+<?php if ($this->getHelperPluginManager()->has('commentShowComments')) : ?>
+<?php echo $this->commentShowComments($url); ?>
+<?php endif; ?>

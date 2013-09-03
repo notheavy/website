@@ -1,0 +1,43 @@
+<?php 
+/**
+ * Website Zend\Together
+ *
+ * @package    User
+ * @author     Ralf Eggert <r.eggert@travello.de>
+ * * @link       http://www.zf-together.com
+ */
+
+/**
+ * User-Admin delete view script
+ * 
+ * @package    User
+ */
+
+$this->headTitle('Benutzer löschen');
+$this->pageTitle('Den ausgewählten Benutzer löschen');
+
+// set user entity
+$user = $this->user; /* @var $user UserEntity */
+$name = $user->getFirstname() . ' ' . $user->getLastname();
+
+$actionUrl = $this->url('user-admin/action', array(), array(), true);
+?>
+<table class="table table-data">
+<tbody>
+<tr>
+<th>Name:</th>
+<td><?php echo $name; ?></td>
+</tr>
+<tr>
+<th>E-Mail: &nbsp;</th>
+<td><?php echo $user->getEmail(); ?></td>
+</tr>
+<tr>
+<th>Rolle:</th>
+<td><?php echo $user->getRoleName(); ?></td>
+</tr>
+</tbody>
+</table>
+<?php echo $this->showForm($this->form, $actionUrl, 'form-horizontal'); ?>
+<hr />
+<a href="<?php echo $this->url('user-admin'); ?>" class="btn">Benutzerliste</a>

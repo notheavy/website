@@ -1,0 +1,277 @@
+-- phpMyAdmin SQL Dump
+-- version 3.4.5deb1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Erstellungszeit: 03. Sep 2013 um 16:07
+-- Server Version: 5.1.69
+-- PHP-Version: 5.3.6-13ubuntu3.10
+
+SET FOREIGN_KEY_CHECKS=0;
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT=0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+--
+-- Datenbank: `zftogether`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `blogs`
+--
+
+DROP TABLE IF EXISTS `blogs`;
+CREATE TABLE IF NOT EXISTS `blogs` (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `cdate` datetime DEFAULT NULL,
+  `title` varchar(128) DEFAULT NULL,
+  `teaser` text,
+  `content` text,
+  `url` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Daten für Tabelle `blogs`
+--
+
+INSERT INTO `blogs` (`id`, `cdate`, `title`, `teaser`, `content`, `url`) VALUES
+(3, '2013-09-03 15:55:42', 'Zend\\Together Website gestartet', '<p>Hier steht der Anreißer für den Beitrag</p>', '<p>Und hier der ganze Beitrag usw...</p>', 'zendtogether-website-gestartet');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `comments`
+--
+
+DROP TABLE IF EXISTS `comments`;
+CREATE TABLE IF NOT EXISTS `comments` (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `cdate` datetime DEFAULT NULL,
+  `status` varchar(8) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `email` varchar(128) DEFAULT NULL,
+  `name` varchar(64) DEFAULT NULL,
+  `message` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `crusts`
+--
+
+DROP TABLE IF EXISTS `crusts`;
+CREATE TABLE IF NOT EXISTS `crusts` (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) DEFAULT NULL,
+  `costs` decimal(4,2) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Daten für Tabelle `crusts`
+--
+
+INSERT INTO `crusts` (`id`, `name`, `costs`) VALUES
+(1, 'Pizzaboden aus Weizenmehl', '2.00'),
+(2, 'Pizzaboden aus Vollkornmehl', '2.50');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `orders`
+--
+
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE IF NOT EXISTS `orders` (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `cdate` datetime DEFAULT NULL,
+  `status` varchar(8) DEFAULT NULL,
+  `positions` text,
+  `comments` text,
+  `user_id` smallint(6) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `orders_user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `pizzas`
+--
+
+DROP TABLE IF EXISTS `pizzas`;
+CREATE TABLE IF NOT EXISTS `pizzas` (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `status` varchar(8) DEFAULT NULL,
+  `name` varchar(32) DEFAULT NULL,
+  `description` text,
+  `price` decimal(5,2) DEFAULT NULL,
+  `url` varchar(32) DEFAULT NULL,
+  `crust_id` smallint(6) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `pizzas_crust_id` (`crust_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+
+--
+-- Daten für Tabelle `pizzas`
+--
+
+INSERT INTO `pizzas` (`id`, `status`, `name`, `description`, `price`, `url`, `crust_id`) VALUES
+(1, 'approved', 'Pizza Salami', '<p>Die Pizza Salami ist Valentinas Spezialit&auml;t. Sie l&auml;sst die Salami extra aus Mailand von Ihrem Vater Giacomo herstellen, der Metzger aus Leidenschaft ist. Die Salami wird nur von Valentina geschnitten, Alessandro muss bei der Herstellung immer Abstand halten.</p><p>Die Pizza Salami wird mit einem knusprigen Boden aus Weizenmehl gebacken und mit Tomatenpampe, K&auml;se und leckerer Mail&auml;nder Salami belegt.</p>', '4.95', 'pizza-salami', 1),
+(2, 'approved', 'Pizza Salami Vollkorn', '<p>Die Pizza Salami Vollkorn ist Valentinas Spezialit&auml;t. Sie l&auml;sst die Salami extra aus Mailand von Ihrem Vater Giacomo herstellen, der Metzger aus Leidenschaft ist. Die Salami wird nur von Valentina geschnitten, Alessandro muss bei der Herstellung immer Abstand halten.</p><p>Die Pizza Salami Vollkorn&nbsp;wird mit einem knusprigen Boden aus Vollkornmehl gebacken und mit Tomatenpampe, K&auml;se und leckerer Mail&auml;nder Salami belegt.</p>', '5.95', 'pizza-salami-vollkorn', 2),
+(3, 'approved', 'Pizza Schinken', '<p>Die Pizza Schinken ist Alessandros Spezialit&auml;t. Den Prosciutto Cotto besorgt er direkt aus Parma und schneidet ihn hauchd&uuml;nn bei jeder Herstellung frisch vom ganzen Schinken ab. Schinken aus der Packung kommt Alessandro nicht auf die Pizza.</p><p>Die Pizza Schinken&nbsp;wird mit einem knusprigen Boden aus Weizenmehl gebacken und mit Tomatenpampe, K&auml;se und frischem Kochschinken aus Parma belegt.</p>', '4.95', 'pizza-schinken', 1),
+(4, 'approved', 'Pizza Schinken Vollkorn', '<p>Die Pizza Schinken&nbsp;Vollkorn ist Alessandros Spezialit&auml;t. Den Prosciutto Cotto besorgt er direkt aus Parma und schneidet ihn hauchd&uuml;nn bei jeder Herstellung frisch vom ganzen Schinken ab. Schinken aus der Packung kommt Alessandro nicht auf die Pizza.</p><p>Die Pizza Schinken&nbsp;Vollkorn&nbsp;wird mit einem knusprigen Boden aus&nbsp;Vollkornmehl gebacken und mit Tomatenpampe, K&auml;se und frischem Kochschinken aus Parma belegt.</p>', '5.95', 'pizza-schinken-vollkorn', 2),
+(5, 'approved', 'Pizza Melone', '<p>Die Pizza Melone ist die extravagante Spezialit&auml;t von Luigis Pizza-Service. Sie ist eine Erfindung von Alessandro, der sie einst auf eigenes Risiko in die Pizzakarte einbrachte. Zuerst waren die Kunden skeptisch, doch dann wandelte sie sich zu einem Dauerbrenner.</p><p>Die Pizza Melone wird mit einem knusprigen Boden aus Weizenmehl gebacken und mit Tomatenpampe, K&auml;se, Schinken und fruchtiger Honigmelone belegt.</p>', '6.95', 'pizza-melone', 1),
+(6, 'approved', 'Pizza Melone Vollkorn', '<p>Die Pizza Melone&nbsp;Vollkorn ist die extravagante Spezialit&auml;t von Luigis Pizza-Service. Sie ist eine Erfindung von Alessandro, der sie einst auf eigenes Risiko in die Pizzakarte einbrachte. Zuerst waren die Kunden skeptisch, doch dann wandelte sie sich zu einem Dauerbrenner.</p><p>Die Pizza Melone Vollkorn wird mit einem knusprigen Boden aus Vollkornmehl gebacken und mit Tomatenpampe, K&auml;se, Schinken und fruchtiger Honigmelone belegt.</p>', '7.95', 'pizza-melone-vollkorn', 2),
+(7, 'approved', 'Pizza Speciale', '<p>Die Pizza Speciale ist echte Teamarbeit. Auf der Pizza treffen Valentinas Salami aus Mailand, Alessandros Kochschinken aus Parma und frischen Champignons aufeinander. Dabei ist die Menge an Salami und Schinken optimal aufeinander abgestimmt.</p><p>Die Pizza Speciale&nbsp;wird mit einem knusprigen Boden aus Weizenmehl gebacken und mit Tomatenpampe, K&auml;se, Salami aus Mailand, Kochschinken aus Parma und frischen&nbsp;Champignons belegt.</p>', '6.95', 'pizza-speciale', 1),
+(8, 'approved', 'Pizza Speciale Vollkorn', '<p>Die Pizza Speciale Vollkorn ist echte Teamarbeit. Auf der Pizza treffen Valentinas Salami aus Mailand, Alessandros Kochschinken aus Parma und frischen Champignons aufeinander. Dabei ist die Menge an Salami und Schinken optimal aufeinander abgestimmt.</p><p>Die Pizza Speciale&nbsp;Vollkorn wird mit einem knusprigen Boden aus Vollkornmehl gebacken und mit Tomatenpampe, K&auml;se, Salami aus Mailand, Kochschinken aus Parma und frischen&nbsp;Champignons belegt.</p>', '7.95', 'pizza-speciale-vollkorn', 2),
+(9, 'blocked', 'Pizza Thunfisch', '<p>Die Pizza Thunfisch ist Luigis Leibspeise. Als Kind besuchte er jedes Jahr seinen Opa auf Sizilien, um ihn bei der Mattanza zuzuschauen. Trotz des blutigen Spektakels liebt Luigi auch heute noch seinen Thunfisch wie am ersten Tag.</p><p>Die Pizza Thunfisch wird mit einem knusprigen Boden aus Weizenmehl gebacken und mit Tomatenpampe, K&auml;se, Zwiebeln und Thunfisch belegt.</p>', '7.95', 'pizza-thunfisch', 1),
+(10, 'blocked', 'Pizza Thunfisch Vollkorn', '<p>Die Pizza Thunfisch&nbsp;Vollkorn ist Luigis Leibspeise. Als Kind besuchte er jedes Jahr seinen Opa auf Sizilien, um ihn bei der Mattanza zuzuschauen. Trotz des blutigen Spektakels liebt Luigi auch heute noch seinen Thunfisch wie am ersten Tag.</p><p>Die Pizza Thunfisch Vollkorn wird mit einem knusprigen Boden aus Vollkornmehl gebacken und mit Tomatenpampe, K&auml;se, Zwiebeln und Thunfisch belegt.</p>', '8.95', 'pizza-thunfisch-vollkorn', 2),
+(11, 'approved', 'Pizza Spinaci', '<p>Die Pizza Spinaci ist Francescas Lieblingspizza. Sie a&szlig; als Kind schon ihren Br&uuml;dern immer den Spinat weg, um gro&szlig; und stark zu werden. Da ist es wenig &uuml;berraschend, dass sie diese Pizzakomposition gegen die Einw&auml;nde von Luigi dauerhaft auf der Karte platzieren konnte.</p><p>Die Pizza Spinaci wird mit einem knusprigen Boden aus Weizenmehl gebacken und mit Tomatenpampe, K&auml;se, Fetak&auml;se und frischem Spinat belegt.</p>', '7.95', 'pizza-spinaci', 1),
+(12, 'approved', 'Pizza Spinaci Vollkorn', '<p>Die Pizza Spinaci&nbsp;Vollkorn ist Francescas Lieblingspizza. Sie a&szlig; als Kind schon ihren Br&uuml;dern immer den Spinat weg, um gro&szlig; und stark zu werden. Da ist es wenig &uuml;berraschend, dass sie diese Pizzakomposition gegen die Einw&auml;nde von Luigi dauerhaft auf der Karte platzieren konnte.</p><p>Die Pizza Spinaci&nbsp;Vollkorn wird mit einem knusprigen Boden aus Vollkornmehl gebacken und mit Tomatenpampe, K&auml;se, Fetak&auml;se und frischem Spinat belegt.</p>', '8.95', 'pizza-spinaci-vollkorn', 2),
+(13, 'approved', 'Pizza Mexicana', '<p>Die Pizza Mexicana l&auml;sst die Herzen von Freunden der deftigen K&uuml;che h&ouml;her schlagen. Eigentlich hat Italien wenig mit Mexiko zu tun, dennoch verlangten immer mehr Kunden nach einer soliden Pizza mit Hackfleisch und deftigem Gem&uuml;se.</p><p>Die Pizza Mexicana wird mit einem knusprigen Boden aus Weizenmehl gebacken und mit Tomatenpampe, K&auml;se, Zwiebeln, Peperoni, Mais und extra viel Hackfleisch belegt.</p>', '8.95', 'pizza-mexicana', 1),
+(14, 'approved', 'Pizza Mexicana Vollkorn', '<p>Die Pizza Mexicana&nbsp;Vollkorn l&auml;sst die Herzen von Freunden der deftigen K&uuml;che h&ouml;her schlagen. Eigentlich hat Italien wenig mit Mexiko zu tun, dennoch verlangten immer mehr Kunden nach einer soliden Pizza mit Hackfleisch und deftigem Gem&uuml;se.</p><p>Die Pizza Mexicana Vollkorn wird mit einem knusprigen Boden aus Vollkornmehl gebacken und mit Tomatenpampe, K&auml;se, Zwiebeln, Peperoni, Mais und extra viel Hackfleisch belegt.</p>', '9.95', 'pizza-mexicana-vollkorn', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `pizzas_toppings`
+--
+
+DROP TABLE IF EXISTS `pizzas_toppings`;
+CREATE TABLE IF NOT EXISTS `pizzas_toppings` (
+  `pizza_id` smallint(6) DEFAULT NULL,
+  `topping_id` smallint(6) DEFAULT NULL,
+  KEY `pizzas_toppings_pizza_id` (`pizza_id`),
+  KEY `pizzas_toppings_topping_id` (`topping_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `pizzas_toppings`
+--
+
+INSERT INTO `pizzas_toppings` (`pizza_id`, `topping_id`) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(2, 1),
+(2, 2),
+(2, 3),
+(3, 1),
+(3, 2),
+(3, 4),
+(4, 1),
+(4, 2),
+(4, 4),
+(5, 1),
+(5, 2),
+(5, 4),
+(5, 7),
+(6, 1),
+(6, 2),
+(6, 4),
+(6, 7),
+(7, 1),
+(7, 2),
+(7, 3),
+(7, 4),
+(7, 6),
+(8, 1),
+(8, 2),
+(8, 3),
+(8, 4),
+(8, 6),
+(9, 1),
+(9, 2),
+(9, 8),
+(9, 9),
+(10, 1),
+(10, 2),
+(10, 8),
+(10, 9),
+(11, 1),
+(11, 2),
+(11, 10),
+(11, 12),
+(12, 1),
+(12, 2),
+(12, 10),
+(12, 12),
+(13, 1),
+(13, 2),
+(13, 8),
+(13, 11),
+(13, 13),
+(13, 14),
+(14, 1),
+(14, 2),
+(14, 8),
+(14, 11),
+(14, 13),
+(14, 14);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `toppings`
+--
+
+DROP TABLE IF EXISTS `toppings`;
+CREATE TABLE IF NOT EXISTS `toppings` (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) DEFAULT NULL,
+  `costs` decimal(4,2) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+
+--
+-- Daten für Tabelle `toppings`
+--
+
+INSERT INTO `toppings` (`id`, `name`, `costs`) VALUES
+(1, 'Tomatenpampe', '0.50'),
+(2, 'Käse', '0.50'),
+(3, 'Salami', '1.00'),
+(4, 'Schinken', '1.00'),
+(5, 'Ananas', '1.50'),
+(6, 'Champignons', '1.00'),
+(7, 'Melone', '1.50'),
+(8, 'Zwiebeln', '0.50'),
+(9, 'Thunfisch', '2.00'),
+(10, 'Spinat', '1.50'),
+(11, 'Peperoni', '1.00'),
+(12, 'Feta', '1.50'),
+(13, 'Hackfleisch', '2.00'),
+(14, 'Mais', '1.00');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `role` varchar(8) DEFAULT NULL,
+  `email` varchar(128) DEFAULT NULL,
+  `pass` varchar(60) DEFAULT NULL,
+  `firstname` varchar(32) DEFAULT NULL,
+  `lastname` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Daten für Tabelle `users`
+--
+
+INSERT INTO `users` (`id`, `role`, `email`, `pass`, `firstname`, `lastname`) VALUES
+(1, 'admin', 'admin@zftogether.com', '$2a$12$9xygDYWYlgGpPPcEUBgx6.m2PUFpcqybzXCdOhOlrRars5wrc7oEa', 'Admin', 'Together');
+SET FOREIGN_KEY_CHECKS=1;
+COMMIT;

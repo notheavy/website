@@ -1,0 +1,43 @@
+<?php 
+/**
+ * Website Zend\Together
+ *
+ * @package    Application
+ * @author     Ralf Eggert <r.eggert@travello.de>
+ * * @link       http://www.zf-together.com
+ */
+
+/**
+ * Listing 22.5 view script
+ * 
+ * @package    Application
+ */
+
+$this->headTitle('Listing 22.5');
+$this->pageTitle('Listing 22.5');
+?>
+<h3><code>OrderTable</code> setzt <code>OrderHydrator</code> ein</h3>
+<pre>
+&lt;?php
+namespace Shop\Table;
+
+use Shop\Entity\OrderEntityInterface;
+use Zend\Db\Adapter\Adapter;
+use Zend\Db\ResultSet\HydratingResultSet;
+use Zend\Db\TableGateway\TableGateway;
+use Zend\Stdlib\Hydrator\HydratorInterface;
+
+class OrderTable extends TableGateway implements OrderTableInterface
+{
+    public function __construct(Adapter $adapter, OrderEntityInterface $entity, HydratorInterface $hydrator)
+    {
+        $resultSet = new HydratingResultSet();
+        $resultSet->setHydrator($hydrator);
+        $resultSet->setObjectPrototype($entity);
+        
+        parent::__construct('orders', $adapter, null, $resultSet);
+    }
+
+    [...]
+}
+</pre>

@@ -1,0 +1,26 @@
+<?php 
+/**
+ * Website Zend\Together
+ *
+ * @package    User
+ * @author     Ralf Eggert <r.eggert@travello.de>
+ * * @link       http://www.zf-together.com
+ */
+
+/**
+ * User register view script
+ * 
+ * @package    User
+ */
+
+$this->headTitle('Registrieren');
+$this->pageTitle('Als neuer Benutzer registrieren');
+
+$actionUrl = $this->url('user', array('action' => 'register'));
+
+echo $this->showForm($this->form, $actionUrl, 'form-horizontal');
+?>
+<hr />
+<h3>Sie sind schon registriert?</h3>
+<?php $url = $this->url('user', array('action' => 'login'))?>
+<a href="<?php echo $url; ?>" class="btn">Jetzt anmelden</a>

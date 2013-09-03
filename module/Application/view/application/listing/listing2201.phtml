@@ -1,0 +1,30 @@
+<?php 
+/**
+ * Website Zend\Together
+ *
+ * @package    Application
+ * @author     Ralf Eggert <r.eggert@travello.de>
+ * * @link       http://www.zf-together.com
+ */
+
+/**
+ * Listing 22.1 view script
+ * 
+ * @package    Application
+ */
+
+$this->headTitle('Listing 22.1');
+$this->pageTitle('Listing 22.1');
+?>
+<h3>Aufbau der Datenbank</h3>
+<pre>
+CREATE TABLE orders (
+    id integer primary key, 
+    cdate datetime, 
+    status varchar(8), 
+    positions text, 
+    comments text, 
+    user_id integer, 
+    FOREIGN KEY(user_id) REFERENCES users(id)
+);
+</pre>

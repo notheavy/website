@@ -1,0 +1,40 @@
+<?php 
+/**
+ * Website Zend\Together
+ *
+ * @package    Application
+ * @author     Ralf Eggert <r.eggert@travello.de>
+ * * @link       http://www.zf-together.com
+ */
+
+/**
+ * Listing 22.6 view script
+ * 
+ * @package    Application
+ */
+
+$this->headTitle('Listing 22.6');
+$this->pageTitle('Listing 22.6');
+?>
+<h3>Factory für <code>OrderTable</code> zur Übergabe vom <code>OrderHydrator</code></h3>
+<pre>
+&lt;?php
+namespace Shop\Table;
+
+use Zend\ServiceManager\FactoryInterface;
+use Zend\ServiceManager\ServiceLocatorInterface;
+
+class OrderTableFactory implements FactoryInterface
+{
+    public function createService(ServiceLocatorInterface $serviceLocator)
+    {
+        $hydratorManager = $serviceLocator->get('HydratorManager');
+        
+        $adapter  = $serviceLocator->get('Zend\Db\Adapter\Adapter');
+        $entity   = $serviceLocator->get('Shop\Entity\Order');
+        $hydrator = $hydratorManager->get('Shop\Hydrator\Order');
+        $table    = new OrderTable($adapter, $entity, $hydrator);
+        return $table;
+    }
+}
+</pre>

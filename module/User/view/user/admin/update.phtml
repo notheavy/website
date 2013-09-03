@@ -1,0 +1,21 @@
+<?php 
+/**
+ * Website Zend\Together
+ *
+ * @package    User
+ * @author     Ralf Eggert <r.eggert@travello.de>
+ * * @link       http://www.zf-together.com
+ */
+
+/**
+ * User-Admin update view script
+ * 
+ * @package    User
+ */
+
+$this->headTitle('Benutzer ändern');
+$this->pageTitle('Den ausgewählten Benutzer ändern');
+
+$actionUrl = $this->url('user-admin/action', array(), array(), true);
+
+echo $this->showForm($this->form, $actionUrl, 'form-horizontal');

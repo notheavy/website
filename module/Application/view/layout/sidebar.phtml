@@ -1,0 +1,28 @@
+<?php
+/**
+ * Website Zend\Together
+ *
+ * @package    Application
+ * @author     Ralf Eggert <r.eggert@travello.de>
+ * * @link       http://www.zf-together.com
+ */
+
+/**
+ * Sidebar view script
+ * 
+ * @package    Application
+ */
+
+$url = $this->url(null, array(), true);
+
+if ($this->getHelperPluginManager()->has('userShowWidget')) {
+    echo $this->userShowWidget();
+}
+
+if ($this->getHelperPluginManager()->has('shopShowBasket')) {
+    echo $this->shopShowBasket();
+}
+?>
+<div class="well">
+<?php echo $this->cmsContentBlock('application_sidebar_box1', $url); ?>
+</div>

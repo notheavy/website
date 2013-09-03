@@ -1,1 +1,30 @@
-<h2>Startseite</h2>
+<?php 
+/**
+ * Website Zend\Together
+ *
+ * @package    Application
+ * @author     Ralf Eggert <r.eggert@travello.de>
+ * * @link       http://www.zf-together.com
+ */
+
+/**
+ * Index view script
+ * 
+ * @package    Application
+ */
+
+$this->headTitle('Herzlich Willkommen');
+$this->pageTitle('Herzlich Willkommen bei');
+
+$url = $this->url('home');
+?>
+<img src="/img/luigis-pizza-logo.gif" alt="Zend\Together" /><br />
+<br />
+<?php if ($this->getHelperPluginManager()->has('pizzaShowCarousel')) : ?>
+<?php echo $this->pizzaShowCarousel(); ?>
+<?php else : ?>
+Hier könnte dann was stehen
+<?php endif; ?>
+<?php 
+echo $this->cmsContentBlock('application_index_index', $url);
+?>

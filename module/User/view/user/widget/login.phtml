@@ -1,0 +1,22 @@
+<?php
+/**
+ * Website Zend\Together
+ *
+ * @package    User
+ * @author     Ralf Eggert <r.eggert@travello.de>
+ * * @link       http://www.zf-together.com
+ */
+
+/**
+ * User login widget view script
+ * 
+ * @package    User
+ */
+
+// prepare form
+$actionUrl = $this->url('user', array('action' => 'login'));
+?>
+<div class="well">
+<h4>Sie sind nicht angemeldet</h4>
+<?php echo $this->showForm($this->form, $actionUrl, 'form-vertical'); ?>
+</div>
