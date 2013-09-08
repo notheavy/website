@@ -7,6 +7,10 @@ body {
     padding-bottom: 0px;
 }
 
+a {
+    color: #69b44a;
+}
+
 h1 {
     font-size: 30px;
 }
