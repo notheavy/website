@@ -108,22 +108,22 @@ class BlogController extends AbstractActionController
         
         // create feed
         $feed = new Feed();
-        $feed->setTitle('Luigis Pizza-Blog');
-        $feed->setFeedLink('http://luigis-pizza.local/blog/rss', 'atom');
+        $feed->setTitle('Zend\Together - Blog');
+        $feed->setFeedLink('http://zendtogether.com/blog/rss', 'atom');
         $feed->addAuthor(array(
-            'name'  => 'Luigi Bartoli',
-            'email' => 'luigi@luigis-pizza.de',
-            'uri'   => 'http://luigis-pizza.local',
+            'name'  => 'Zend\Together',
+            'email' => 'info@zendtogether.com',
+            'uri'   => 'http://zendtogether.com',
         ));
-        $feed->setDescription('Luigis Pizza-Blog Beiträge');
-        $feed->setLink('http://luigis-pizza.local');
+        $feed->setDescription('Zend\Together - Beiträge');
+        $feed->setLink('http://zendtogether.com');
         $feed->setDateModified(time());
         
         // add blog entries
         foreach ($blogList as $blog) {
             $entry = $feed->createEntry();
             $entry->setTitle($blog->getTitle());
-            $entry->setLink('http://luigis-pizza.local/blog/' . $blog->getUrl());
+            $entry->setLink('http://zendtogether.com/blog/' . $blog->getUrl());
             $entry->setDescription($blog->getContent());
             $entry->setDateCreated(strtotime($blog->getCdate()));
             

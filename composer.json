@@ -1,11 +1,11 @@
 {
-    "name": "zf2buch/kapitel22",
-    "description": "Listings für Kapitel 22 vom Zend Framework 2 Buch",
+    "name": "zendtogether/website",
+    "description": "Website for the Zend\Together conference",
     "keywords": [
-        "framework",
+        "conference",
         "zf2"
     ],
-    "homepage": "http://www.zendframeworkbuch.de/",
+    "homepage": "http://zendtogether.com/",
     "require": {
         "php": ">=5.3.3",
         "zendframework/zendframework": "2.2.*",

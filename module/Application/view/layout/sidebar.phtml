@@ -15,10 +15,6 @@
 
 $url = $this->url(null, array(), true);
 
-if ($this->getHelperPluginManager()->has('userShowWidget')) {
-    echo $this->userShowWidget();
-}
-
 if ($this->getHelperPluginManager()->has('shopShowBasket')) {
     echo $this->shopShowBasket();
 }
@@ -26,3 +22,8 @@ if ($this->getHelperPluginManager()->has('shopShowBasket')) {
 <div class="well">
 <?php echo $this->cmsContentBlock('application_sidebar_box1', $url); ?>
 </div>
+<?php
+if ($this->getHelperPluginManager()->has('userShowWidget')) {
+echo $this->userShowWidget();
+}
+?>

@@ -13,18 +13,11 @@
  * @package    Application
  */
 
-$this->headTitle('Herzlich Willkommen');
-$this->pageTitle('Herzlich Willkommen bei');
+$this->headTitle('');
+
+//$this->pageTitle('Zend\Togæther');
 
 $url = $this->url('home');
-?>
-<img src="/img/luigis-pizza-logo.gif" alt="Zend\Together" /><br />
-<br />
-<?php if ($this->getHelperPluginManager()->has('pizzaShowCarousel')) : ?>
-<?php echo $this->pizzaShowCarousel(); ?>
-<?php else : ?>
-Hier könnte dann was stehen
-<?php endif; ?>
-<?php 
+
 echo $this->cmsContentBlock('application_index_index', $url);
 ?>

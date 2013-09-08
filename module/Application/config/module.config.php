@@ -98,8 +98,8 @@ return array(
     ),
     
     'session' => array(
-        'save_path' => realpath(APPLICATION_ROOT . '/data/session'),
-        'name'      => 'LUIGI_SESSION',
+//        'save_path' => realpath(APPLICATION_ROOT . '/data/session'),
+        'name'      => 'ZEND_TOGETHER_SESSION',
     ),
     
     'navigation' => array(
@@ -132,6 +132,13 @@ return array(
                         'route'      => 'application',
                         'controller' => 'about',
                         'action'     => 'imprint',
+                    ),
+                    'speaker' => array(
+                        'type'       => 'mvc',
+                        'label'      => 'Sprecher',
+                        'route'      => 'application',
+                        'controller' => 'about',
+                        'action'     => 'speaker',
                     ),
                 ),
             ),

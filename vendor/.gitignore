@@ -4,3 +4,4 @@ bin
 composer
 zendframework
 autoload.php
+*
