@@ -135,7 +135,7 @@ return array(
         'default' => array(
             'blog' => array(
                 'type'       => 'mvc',
-                'order'      => '500',
+                'order'      => '200',
                 'label'      => 'Blog',
                 'route'      => 'blog',
                 'controller' => 'blog',

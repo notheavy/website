@@ -1,0 +1,21 @@
+<?php 
+/**
+ * Website Zend\Together
+ *
+ * @package    Application
+ * @author     Ralf Eggert <r.eggert@travello.de>
+ * * @link       http://www.zf-together.com
+ */
+
+/**
+ * Location view script
+ * 
+ * @package    Application
+ */
+
+$this->headTitle('Veranstaltungsort');
+$this->pageTitle('Die Nordakademie lädt ein.');
+
+$url = $this->url('application', array(), array(), true);
+?>
+<?php echo $this->cmsContentBlock('application_about_location', $url); ?>

@@ -1,0 +1,21 @@
+<?php 
+/**
+ * Website Zend\Together
+ *
+ * @package    Application
+ * @author     Ralf Eggert <r.eggert@travello.de>
+ * * @link       http://www.zf-together.com
+ */
+
+/**
+ * Speaker view script
+ * 
+ * @package    Application
+ */
+
+$this->headTitle('Sprecher');
+$this->pageTitle('Sprecher auf der Zend\Together');
+
+$url = $this->url('application', array(), array(), true);
+?>
+<?php echo $this->cmsContentBlock('application_about_speaker', $url); ?>

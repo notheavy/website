@@ -9,22 +9,45 @@
 
 /**
  * Footer view script
- * 
+ *
  * @package    Application
  */
 ?>
 <footer>
-<div class="container">
-<div class="row">
-<div class="span12">
-<ul class="unstyled footernav">
-<li><a href="<?php echo $this->url('application', array('controller' => 'about', 'action' => 'team'))?>">Team</a></li>
-<li><a href="<?php echo $this->url('application', array('controller' => 'about', 'action' => 'contact'))?>">Kontakt</a></li>
-<li><a href="<?php echo $this->url('application', array('controller' => 'about', 'action' => 'imprint'))?>">Impressum</a></li>
-</ul>
-</div>
-</div>
-</div>
+    <div class="container">
+        <div class="row">
+            <div class="span3">
+                <h5>Über Zend\Together</h5>
+                <ul class="unstyled">
+                    <li><a href="<?php echo $this->url('application', array('controller' => 'about', 'action' => 'speaker')) ?>">Sprecher</a></li>
+                    <li><a href="<?php echo $this->url('application', array('controller' => 'about', 'action' => 'sessions')) ?>">Sessions</a>
+                    <li><a href="<?php echo $this->url('application', array('controller' => 'about', 'action' => 'location')) ?>">Veranstaltungsort</a></li>
+                    <li><a href="<?php echo $this->url('application', array('controller' => 'about', 'action' => 'tickets')) ?>">Tickets</a></li>
+                    <li><a href="<?php echo $this->url('application', array('controller' => 'about', 'action' => 'imprint')) ?>">Impressum</a></li>
+                </ul>
+            </div>
+            <div class="span3">
+                <h5>Social Media</h5>
+                <ul class="unstyled">
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Google+</a></li>
+                    <li><a href="#">WasAuchImmer</a></li>
+                </ul>
+            </div>
+            <div class="span3">
+                <h5>Links</h5>
+                <ul class="unstyled">
+                    <li><a href="#">Zend Framework</a></li>
+                    <li><a href="#">Nordakademie</a></li>
+                    <li><a href="#">...</a></li>
+                </ul>
+            </div>
+            <div class="span3">
+                <h5>Logos</h5>
+                Hier nochmal das Logo und so einbinden?
+            </div>
+        </div>
+    </div>
 </footer>
-<br />
-<br />
+<br/>
+<br/>

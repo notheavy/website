@@ -104,10 +104,42 @@ return array(
     
     'navigation' => array(
         'default' => array(
+            'speaker' => array(
+                'type'       => 'mvc',
+                'order'      => '300',
+                'label'      => 'Sprecher',
+                'route'      => 'application',
+                'controller' => 'about',
+                'action'     => 'speaker',
+            ),
+            'sessions' => array(
+                'type'       => 'mvc',
+                'order'      => '400',
+                'label'      => 'Sessions',
+                'route'      => 'application',
+                'controller' => 'about',
+                'action'     => 'sessions',
+            ),
+            'location' => array(
+                'type'       => 'mvc',
+                'order'      => '500',
+                'label'      => 'Veranstaltungsort',
+                'route'      => 'application',
+                'controller' => 'about',
+                'action'     => 'location',
+            ),
+            'tickets' => array(
+                'type'       => 'mvc',
+                'order'      => '500',
+                'label'      => 'Tickets',
+                'route'      => 'application',
+                'controller' => 'about',
+                'action'     => 'tickets',
+            ),
             'service' => array(
                 'type'       => 'mvc',
                 'order'      => '900',
-                'label'      => 'Über uns',
+                'label'      => 'Über Zend\Together',
                 'route'      => 'application',
                 'controller' => 'about',
                 'action'     => 'index',
@@ -132,13 +164,6 @@ return array(
                         'route'      => 'application',
                         'controller' => 'about',
                         'action'     => 'imprint',
-                    ),
-                    'speaker' => array(
-                        'type'       => 'mvc',
-                        'label'      => 'Sprecher',
-                        'route'      => 'application',
-                        'controller' => 'about',
-                        'action'     => 'speaker',
                     ),
                 ),
             ),

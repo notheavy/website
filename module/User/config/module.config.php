@@ -114,6 +114,7 @@ return array(
     
     'navigation' => array(
         'default' => array(
+/*
             'user' => array(
                 'type'       => 'mvc',
                 'order'      => '700',
@@ -161,6 +162,7 @@ return array(
                     ),
                 ),
             ),
+*/
         ),
     ),
     
