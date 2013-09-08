@@ -86,7 +86,7 @@ class UserController extends AbstractActionController
         
         // prepare Post/Redirect/Get Plugin
         $prg = $this->prg(
-            $this->url()->fromRoute('user', array('action' => 'login')), 
+            $this->url()->fromRoute('user', array('action' => 'login'), true),
             true
         );
     
@@ -160,7 +160,7 @@ class UserController extends AbstractActionController
         
         // prepare Post/Redirect/Get Plugin
         $prg = $this->prg(
-            $this->url()->fromRoute('user', array('action' => 'register')), 
+            $this->url()->fromRoute('user', array('action' => 'register'), true),
             true
         );
 

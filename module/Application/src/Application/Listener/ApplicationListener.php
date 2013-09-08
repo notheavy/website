@@ -87,10 +87,11 @@ class ApplicationListener implements ListenerAggregateInterface
     {
         // get view Model
         $viewModel = $e->getViewModel(); /* @var $viewModel ViewModel */
-        
+
         // add an additional header segment to layout
         $header = new ViewModel();
         $header->setTemplate('layout/header');
+        $header->setVariable('lang', Locale::getDefault());
         $viewModel->addChild($header, 'header');
         
         // add an additional sidebar segment to layout
@@ -114,16 +115,25 @@ class ApplicationListener implements ListenerAggregateInterface
      *
      * @return null
      */
-    public function setupLocalization(EventInterface $e)
+    public function setupLocalization(MvcEvent $e)
     {
         // get service manager
         $serviceManager = $e->getApplication()->getServiceManager();
-        $viewManager    = $serviceManager->get('viewmanager');
-        
+
+        // get language
+        $lang = $e->getRouteMatch()->getParam('lang', 'de');
+
         // set locale
-        Locale::setDefault('de_DE');
-        
+        Locale::setDefault($lang);
+
+        // get translator
+        $translator = $serviceManager->get('translator');
+
+        // change language
+        $translator->setLocale(Locale::getDefault());
+
         // setup currency view helper
+        $viewManager    = $serviceManager->get('viewmanager');
         $helper = $viewManager->getRenderer()->plugin('currencyformat');
         $helper->setCurrencyCode('EUR');
         $helper->setShouldShowDecimals(true);
@@ -139,9 +149,9 @@ class ApplicationListener implements ListenerAggregateInterface
     public function addValidatorTranslations(EventInterface $e)
     {
         $baseDir = APPLICATION_ROOT . '/module/Application/language';
-        
+
         $translator = Translator::factory(array(
-            'locale'                    => 'de',
+            'locale'                    => Locale::getDefault(),
             'translation_file_patterns' => array(
                 array(
                     'type'        => 'phpArray',

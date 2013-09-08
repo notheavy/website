@@ -16,11 +16,11 @@
 $this->headTitle('user_head_register');
 $this->pageTitle('user_page_register');
 
-$actionUrl = $this->url('user', array('action' => 'register'));
+$actionUrl = $this->url('user', array('action' => 'register'), true);
 
 echo $this->showForm($this->form, $actionUrl, 'form-horizontal');
 ?>
 <hr />
 <h3><?php echo $this->translate('user_message_registration') ?></h3>
-<?php $url = $this->url('user', array('action' => 'login'))?>
+<?php $url = $this->url('user', array('action' => 'login'), true)?>
 <a href="<?php echo $url; ?>" class="btn"><?php echo $this->translate('user_button_login') ?></a>

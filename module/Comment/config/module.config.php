@@ -9,53 +9,57 @@
 
 /**
  * Comment module configuration
- * 
+ *
  * @package    Comment
  */
 return array(
-    'router' => array(
+    'router'             => array(
         'routes' => array(
-            'comment' => array(
+            'comment'       => array(
                 'type'    => 'segment',
                 'options' => array(
-                    'route'    => '/comment[/:action]',
+                    'route'       => '[/:lang]/comment[/:action]',
                     'constraints' => array(
-                        'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'lang'   => 'de|en',
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                     ),
-                    'defaults' => array(
+                    'defaults'    => array(
                         'controller' => 'comment',
                         'action'     => 'index',
                     ),
                 ),
             ),
             'comment-admin' => array(
-                'type'    => 'literal',
-                'options' => array(
-                    'route'    => '/comment-admin',
-                    'defaults' => array(
+                'type'          => 'segment',
+                'options'       => array(
+                    'route'       => '[/:lang]/comment-admin',
+                    'constraints' => array(
+                        'lang' => 'de|en',
+                    ),
+                    'defaults'    => array(
                         'controller' => 'comment-admin',
                         'action'     => 'index',
                     ),
                 ),
                 'may_terminate' => true,
-                'child_routes' => array(
+                'child_routes'  => array(
                     'action' => array(
                         'type'    => 'segment',
                         'options' => array(
-                            'route'    => '/:action[/:id]',
+                            'route'       => '/:action[/:id]',
                             'constraints' => array(
                                 'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'id'     => '[0-9]+',
                             ),
                         ),
                     ),
-                    'page' => array(
+                    'page'   => array(
                         'type'    => 'segment',
                         'options' => array(
-                            'route'    => '/:page[/:sort]',
+                            'route'       => '/:page[/:sort]',
                             'constraints' => array(
-                                'page'   => '[0-9]+',
-                                'sort'   => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'page' => '[0-9]+',
+                                'sort' => '[a-zA-Z][a-zA-Z0-9_-]*',
                             ),
                         ),
                     ),
@@ -63,19 +67,19 @@ return array(
             ),
         ),
     ),
-    
-    'controllers' => array(
+
+    'controllers'        => array(
         'factories' => array(
             'comment'       => 'Comment\Controller\CommentControllerFactory',
             'comment-admin' => 'Comment\Controller\AdminControllerFactory',
         ),
     ),
-    
-    'service_manager' => array(
+
+    'service_manager'    => array(
         'invokables' => array(
-            'Comment\Entity\Comment'  => 'Comment\Entity\CommentEntity',
+            'Comment\Entity\Comment' => 'Comment\Entity\CommentEntity',
         ),
-        'factories' => array(
+        'factories'  => array(
             'Comment\Table\Comment'   => 'Comment\Table\CommentTableFactory',
             'Comment\Form\Create'     => 'Comment\Form\CreateFormFactory',
             'Comment\Form\Update'     => 'Comment\Form\UpdateFormFactory',
@@ -83,32 +87,32 @@ return array(
             'Comment\Service\Comment' => 'Comment\Service\CommentServiceFactory',
         ),
     ),
-    
+
     'controller_plugins' => array(
-        'factories'=> array(
+        'factories' => array(
             'LoadComment' => 'Comment\Controller\Plugin\LoadCommentFactory',
         ),
     ),
-    
-    'input_filters' => array(
+
+    'input_filters'      => array(
         'invokables' => array(
-            'Comment\Filter\Comment'   => 'Comment\Filter\CommentFilter',
+            'Comment\Filter\Comment' => 'Comment\Filter\CommentFilter',
         ),
     ),
-    
-    'view_helpers' => array(
-        'factories'=> array(
-            'CommentShowLinks'     => 'Comment\View\Helper\CommentShowLinksFactory',
-            'CommentShowComments'  => 'Comment\View\Helper\CommentShowCommentsFactory',
+
+    'view_helpers'       => array(
+        'factories' => array(
+            'CommentShowLinks'    => 'Comment\View\Helper\CommentShowLinksFactory',
+            'CommentShowComments' => 'Comment\View\Helper\CommentShowCommentsFactory',
         ),
     ),
-    
-    'view_manager' => array(
-        'template_map' => array(
+
+    'view_manager'       => array(
+        'template_map'        => array(
             'widget/comments' => realpath(
                 __DIR__ . '/../view/comment/widget/comments.phtml'
             ),
-            'widget/links' => realpath(
+            'widget/links'    => realpath(
                 __DIR__ . '/../view/comment/widget/links.phtml'
             ),
         ),
@@ -117,7 +121,7 @@ return array(
         ),
     ),
 
-    'translator'      => array(
+    'translator'         => array(
         'locale'                    => 'de',
         'translation_file_patterns' => array(
             array(
@@ -129,49 +133,32 @@ return array(
         ),
     ),
 
-    'navigation' => array(
+    'navigation'         => array(
         'default' => array(
-            'comment-admin'  => array(
-                'type'       => 'mvc',
-                'order'      => '999',
-                'label'      => 'Kommentare',
-                'route'      => 'comment-admin',
-                'controller' => 'comment-admin',
-                'action'     => 'index',
-                'resource'   => 'comment-admin',
-                'privilege'  => 'index',
-                'pages'      => array(
-                    'update' => array(
-                        'type'       => 'mvc',
-                        'label'      => 'Bearbeiten',
-                        'route'      => 'comment-admin',
-                        'controller' => 'comment-admin',
-                        'action'     => 'update',
-                        'visible'    => false,
-                    ),
-                    'delete' => array(
-                        'type'       => 'mvc',
-                        'label'      => 'Löschen',
-                        'route'      => 'comment-admin',
-                        'controller' => 'comment-admin',
-                        'action'     => 'delete',
-                        'visible'    => false,
-                    ),
-                ),
+            'comment-admin' => array(
+                'type'            => 'mvc',
+                'order'           => '999',
+                'label'           => 'comment_menu_admin',
+                'route'           => 'comment-admin',
+                'controller'      => 'comment-admin',
+                'action'          => 'index',
+                'resource'        => 'comment-admin',
+                'privilege'       => 'index',
+                'use_route_match' => true,
             ),
         ),
     ),
-    
-    'acl' => array(
-        'guest'   => array(
+
+    'acl'                => array(
+        'guest' => array(
             'comment' => array('allow' => null),
         ),
-        'staff'   => array(
+        'staff' => array(
             'comment-admin' => array('allow' => null),
         ),
     ),
-    
-    'comment' => array(
+
+    'comment'            => array(
         'newStatus'  => 'new',
         'spamStatus' => 'blocked',
         'hamStatus'  => 'approved',

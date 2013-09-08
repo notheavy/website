@@ -36,9 +36,9 @@ $this->pageTitle('Kommentare verwalten');
 <tbody>
 <?php foreach ($this->commentList as $comment) : /* @var $comment CommentEntity */ ?>
 <?php
-    $urlShow    = $this->url('comment-admin/action', array('action' => 'show', 'id' => $comment->getId()));
-    $urlEdit    = $this->url('comment-admin/action', array('action' => 'update', 'id' => $comment->getId()));
-    $urlDelete  = $this->url('comment-admin/action', array('action' => 'delete', 'id' => $comment->getId()));
+    $urlShow    = $this->url('comment-admin/action', array('action' => 'show', 'id' => $comment->getId()), true);
+    $urlEdit    = $this->url('comment-admin/action', array('action' => 'update', 'id' => $comment->getId()), true);
+    $urlDelete  = $this->url('comment-admin/action', array('action' => 'delete', 'id' => $comment->getId()), true);
     $urlComment = $comment->getUrl();
 ?>
 <tr>

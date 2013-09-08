@@ -57,7 +57,7 @@ $this->headScript()->appendFile(
 <p><?php echo $this->translate('comment_message_notes') ?></p>
 <br />
 <?php 
-$actionUrl = $this->url('comment', array('action' => 'add'));
+$actionUrl = $this->url('comment', array('action' => 'add'), true);
 echo $this->showForm($this->commentForm, $actionUrl, 'form-horizontal');
 ?>
 </div>

@@ -14,7 +14,7 @@
  */
 return array(
     /* Texts for the navigation menus */
-    'comment_menu_admin'                  => 'Kommentarverwaltung',
+    'comment_menu_admin'                  => 'Kommentare',
     'comment_menu_show'                   => 'Kommentar anzeigen',
     'comment_menu_update'                 => 'Kommentar ändern',
     'comment_menu_delete'                 => 'Kommentar löschen',

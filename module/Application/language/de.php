@@ -31,6 +31,9 @@ return array(
     'application_menu_links'          => 'Links',
     'application_menu_zendframework'  => 'Zend Framework',
     'application_menu_poweredby'      => 'Powered by',
+    'application_menu_language'       => 'Sprache',
+    'application_menu_german'         => 'Deutsch',
+    'application_menu_english'        => 'Englisch',
 
     /* Texts for the head titles */
     'application_head_index'          => 'Zend\Together',

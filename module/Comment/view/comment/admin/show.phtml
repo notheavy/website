@@ -66,26 +66,26 @@ $urlComment = $comment->getUrl();
 <div class="form-actions">
 <?php if ($comment->getStatus() == 'new') : ?>
     <?php
-        $urlSpam = $this->url('comment-admin/action', array('action' => 'spam', 'id' => $id));
-        $urlHam  = $this->url('comment-admin/action', array('action' => 'ham', 'id' => $id));
+        $urlSpam = $this->url('comment-admin/action', array('action' => 'spam', 'id' => $id), true);
+        $urlHam  = $this->url('comment-admin/action', array('action' => 'ham', 'id' => $id), true);
     ?>
     <a href="<?php echo $urlSpam; ?>" class="btn"><i class="icon-thumbs-down"></i> <?php echo $this->translate('comment_button_spam');?></a>
     <a href="<?php echo $urlHam; ?>" class="btn"><i class="icon-thumbs-up"></i> <?php echo $this->translate('comment_button_ham');?></a>
 <?php elseif ($comment->getStatus() == 'approved'): ?>
     <?php
-    $urlNoHam  = $this->url('comment-admin/action', array('action' => 'no-ham', 'id' => $id));
+    $urlNoHam  = $this->url('comment-admin/action', array('action' => 'no-ham', 'id' => $id), true);
     ?>
     <a href="<?php echo $urlNoHam; ?>" class="btn"><i class="icon-thumbs-down"></i> <?php echo $this->translate('comment_button_noham');?></a>
 <?php else: ?>
     <?php
-    $urlNoSpam  = $this->url('comment-admin/action', array('action' => 'no-spam', 'id' => $id));
+    $urlNoSpam  = $this->url('comment-admin/action', array('action' => 'no-spam', 'id' => $id), true);
     ?>
     <a href="<?php echo $urlNoSpam; ?>" class="btn"><i class="icon-thumbs-up"></i> <?php echo $this->translate('comment_button_nospam');?></a>
 <?php endif; ?>
 <?php
-$urlCancel  = $this->url('comment-admin');
-$urlEdit    = $this->url('comment-admin/action', array('action' => 'update', 'id' => $id));
-$urlDelete  = $this->url('comment-admin/action', array('action' => 'delete', 'id' => $id));
+$urlCancel  = $this->url('comment-admin', array(), true);
+$urlEdit    = $this->url('comment-admin/action', array('action' => 'update', 'id' => $id), true);
+$urlDelete  = $this->url('comment-admin/action', array('action' => 'delete', 'id' => $id), true);
 ?>
 <a href="<?php echo $urlEdit; ?>" class="btn"><i class="icon-pencil"></i> <?php echo $this->translate('comment_button_update');?></a>
 <a href="<?php echo $urlDelete; ?>" class="btn"><i class="icon-trash"></i> <?php echo $this->translate('comment_button_delete');?></a>

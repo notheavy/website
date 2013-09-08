@@ -44,7 +44,7 @@ $name = $user->getFirstname() . ' ' . $user->getLastname();
 <th>&nbsp;</th>
 <td>
 <?php if ($this->userIsAllowed('user-admin')): ?>
-<?php $url = $this->url('user-admin'); ?>
+<?php $url = $this->url('user-admin', array(), true); ?>
 <a href="<?php echo $url; ?>" class="btn"><?php echo $this->translate('user_button_admin') ?></a>
 <?php endif; ?>
 <a href="/" class="btn"><?php echo $this->translate('application_button_home') ?></a>

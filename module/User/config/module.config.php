@@ -9,53 +9,57 @@
 
 /**
  * User module configuration
- * 
+ *
  * @package    User
  */
 return array(
-    'router' => array(
+    'router'          => array(
         'routes' => array(
-            'user' => array(
+            'user'       => array(
                 'type'    => 'segment',
                 'options' => array(
-                    'route'    => '/user[/:action]',
+                    'route'       => '[/:lang]/user[/:action]',
                     'constraints' => array(
-                        'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'lang'   => 'de|en',
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                     ),
-                    'defaults' => array(
+                    'defaults'    => array(
                         'controller' => 'user',
                         'action'     => 'index',
                     ),
                 ),
             ),
             'user-admin' => array(
-                'type'    => 'literal',
-                'options' => array(
-                    'route'    => '/user-admin',
-                    'defaults' => array(
+                'type'          => 'segment',
+                'options'       => array(
+                    'route'       => '[/:lang]/user-admin',
+                    'constraints' => array(
+                        'lang' => 'de|en',
+                    ),
+                    'defaults'    => array(
                         'controller' => 'user-admin',
                         'action'     => 'index',
                     ),
                 ),
                 'may_terminate' => true,
-                'child_routes' => array(
+                'child_routes'  => array(
                     'action' => array(
                         'type'    => 'segment',
                         'options' => array(
-                            'route'    => '/:action[/:id]',
+                            'route'       => '/:action[/:id]',
                             'constraints' => array(
                                 'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'id'     => '[0-9]+',
                             ),
                         ),
                     ),
-                    'page' => array(
+                    'page'   => array(
                         'type'    => 'segment',
                         'options' => array(
-                            'route'    => '/:page[/:sort]',
+                            'route'       => '/:page[/:sort]',
                             'constraints' => array(
-                                'page'   => '[0-9]+',
-                                'sort'   => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'page' => '[0-9]+',
+                                'sort' => '[a-zA-Z][a-zA-Z0-9_-]*',
                             ),
                         ),
                     ),
@@ -63,25 +67,25 @@ return array(
             ),
         ),
     ),
-    
-    'controllers' => array(
+
+    'controllers'     => array(
         'factories' => array(
             'user'       => 'User\Controller\UserControllerFactory',
             'user-admin' => 'User\Controller\AdminControllerFactory',
         ),
     ),
-    
-    'input_filters' => array(
+
+    'input_filters'   => array(
         'invokables' => array(
-            'User\Filter\User'   => 'User\Filter\UserFilter',
+            'User\Filter\User' => 'User\Filter\UserFilter',
         ),
     ),
-    
+
     'service_manager' => array(
         'invokables' => array(
-            'User\Entity\User'   => 'User\Entity\UserEntity',
+            'User\Entity\User' => 'User\Entity\UserEntity',
         ),
-        'factories' => array(
+        'factories'  => array(
             'User\Table\User'    => 'User\Table\UserTableFactory',
             'User\Form\Register' => 'User\Form\RegisterFormFactory',
             'User\Form\Update'   => 'User\Form\UpdateFormFactory',
@@ -94,16 +98,16 @@ return array(
             'User\Service\User'  => 'User\Service\UserServiceFactory',
         ),
     ),
-    
-    'view_helpers' => array(
-        'factories'=> array(
+
+    'view_helpers'    => array(
+        'factories' => array(
             'UserShowWidget' => 'User\View\Helper\UserShowWidgetFactory',
             'UserIsAllowed'  => 'User\View\Helper\UserIsAllowedFactory',
         ),
     ),
-    
-    'view_manager' => array(
-        'template_map' => array(
+
+    'view_manager'    => array(
+        'template_map'        => array(
             'widget/logout' => realpath(__DIR__ . '/../view/user/widget/logout.phtml'),
             'widget/login'  => realpath(__DIR__ . '/../view/user/widget/login.phtml'),
         ),
@@ -136,9 +140,8 @@ return array(
         ),
     ),
 
-    'navigation' => array(
-        'default' => array(
-/*
+    'navigation'      => array(
+        'default' => array(/*
             'user' => array(
                 'type'       => 'mvc',
                 'order'      => '700',
@@ -153,6 +156,7 @@ return array(
                         'route'      => 'user',
                         'controller' => 'user',
                         'action'     => 'register',
+                'use_route_match' => true,
                     ),
                     'login' => array(
                         'type'       => 'mvc',
@@ -160,6 +164,7 @@ return array(
                         'route'      => 'user',
                         'controller' => 'user',
                         'action'     => 'login',
+                'use_route_match' => true,
                     ),
                     'user-admin' => array(
                         'type'       => 'mvc',
@@ -167,6 +172,7 @@ return array(
                         'route'      => 'user-admin',
                         'controller' => 'user-admin',
                         'action'     => 'index',
+                'use_route_match' => true,
                     ),
                     'update' => array(
                         'type'       => 'mvc',
@@ -175,6 +181,7 @@ return array(
                         'route'      => 'user-admin',
                         'controller' => 'user-admin',
                         'action'     => 'update',
+                'use_route_match' => true,
                     ),
                     'delete' => array(
                         'type'       => 'mvc',
@@ -183,15 +190,16 @@ return array(
                         'route'      => 'user-admin',
                         'controller' => 'user-admin',
                         'action'     => 'delete',
+                'use_route_match' => true,
                     ),
                 ),
             ),
 */
         ),
     ),
-    
-    'acl' => array(
-        'guest'   => array(
+
+    'acl'             => array(
+        'guest'       => array(
             'user' => array(
                 'allow' => null,
                 'deny'  => array('logout', 'update'),
@@ -203,7 +211,7 @@ return array(
                 'deny'  => array('login', 'register'),
             ),
         ),
-        'admin'   => array(
+        'admin'       => array(
             'user'       => array('allow' => null),
             'user-admin' => array('allow' => null),
         ),

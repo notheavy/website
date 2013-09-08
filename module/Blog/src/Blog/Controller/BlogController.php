@@ -112,7 +112,7 @@ class BlogController extends AbstractActionController
         // create feed
         $feed = new Feed();
         $feed->setTitle($translator->translate('application_head_index') . ' - ' . $translator->translate('blog_head_list'));
-        $feed->setFeedLink($this->url()->fromRoute('blog/rss'), 'atom');
+        $feed->setFeedLink($this->url()->fromRoute('blog/rss', array(), true), 'atom');
         $feed->addAuthor(array(
             'name'  => $translator->translate('application_head_index'),
             'email' => 'info@zf-together.com',
@@ -126,7 +126,7 @@ class BlogController extends AbstractActionController
         foreach ($blogList as $blog) {
             $entry = $feed->createEntry();
             $entry->setTitle($blog->getTitle());
-            $entry->setLink($this->url()->fromRoute('blog/action', array('url' => '$blog->getUrl()')));
+            $entry->setLink($this->url()->fromRoute('blog/action', array('url' => '$blog->getUrl()'), true));
             $entry->setDescription($blog->getContent());
             $entry->setDateCreated(strtotime($blog->getCdate()));
             

@@ -23,13 +23,9 @@ $this->pageTitle('blog_page_index');
 ?>
 <?php foreach ($this->blogList as $blog) : /* @var $blog BlogEntity */ ?>
 <?php
-$urlShow   = $this->url('blog/action', array('url' => $blog->getUrl()));
-$urlEdit   = $this->url(
-    'blog-admin/action', array('action' => 'update', 'id' => $blog->getId())
-);
-$urlDelete = $this->url(
-    'blog-admin/action', array('action' => 'delete', 'id' => $blog->getId())
-);
+$urlShow   = $this->url('blog/action', array('url' => $blog->getUrl()), true);
+$urlEdit   = $this->url('blog-admin/action', array('action' => 'update', 'id' => $blog->getId()), true);
+$urlDelete = $this->url('blog-admin/action', array('action' => 'delete', 'id' => $blog->getId()), true);
 ?>
 <h3><a href="<?php echo $urlShow; ?>"><?php echo $blog->getTitle(); ?></a></h3>
 <div class="clearfix">
@@ -56,7 +52,7 @@ echo $this->paginationControl(
 ?>
 <?php if ($this->userIsAllowed('blog-admin')): ?>
 <p class="pull-center">
-<?php $url = $this->url('blog-admin'); ?>
+<?php $url = $this->url('blog-admin', array(), true); ?>
 <a href="<?php echo $url; ?>" class="btn"><?php echo $this->translate('blog_button_admin'); ?></a>
 </p>
 <?php endif; ?>

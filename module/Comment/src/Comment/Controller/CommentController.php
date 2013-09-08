@@ -70,7 +70,7 @@ class CommentController extends AbstractActionController
         // prepare Post/Redirect/Get Plugin
         $prg = $this->prg(
             $this->url()->fromRoute(
-                'comment', array('action' => 'add')
+                'comment', array('action' => 'add'), true
             ), 
             true
         );

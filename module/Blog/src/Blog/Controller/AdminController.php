@@ -78,7 +78,7 @@ class AdminController extends AbstractActionController
         // prepare Post/Redirect/Get Plugin
         $prg = $this->prg(
             $this->url()->fromRoute(
-                'blog-admin/action', array('action' => 'create')
+                'blog-admin/action', array('action' => 'create'), true
             ), 
             true
         );

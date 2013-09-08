@@ -9,20 +9,21 @@
 
 /**
  * Cms module configuration
- * 
+ *
  * @package    Cms
  */
 return array(
-    'router' => array(
+    'router'          => array(
         'routes' => array(
             'cms' => array(
                 'type'    => 'segment',
                 'options' => array(
-                    'route'    => '/cms[/:action]',
+                    'route'       => '[/:lang]/cms[/:action]',
                     'constraints' => array(
+                        'lang'   => 'de|en',
                         'action' => '[a-zA-Z][a-zA-Z0-9-]*',
                     ),
-                    'defaults' => array(
+                    'defaults'    => array(
                         'controller' => 'cms',
                         'action'     => 'index',
                     ),
@@ -30,21 +31,21 @@ return array(
             ),
         ),
     ),
-    
-    'controllers' => array(
+
+    'controllers'     => array(
         'factories' => array(
             'cms' => 'Cms\Controller\CmsControllerFactory',
         ),
     ),
-    
+
     'service_manager' => array(
         'factories' => array(
             'Cms\Service\Cms' => 'Cms\Service\CmsServiceFactory',
         ),
     ),
-    
-    'view_helpers' => array(
-        'factories'=> array(
+
+    'view_helpers'    => array(
+        'factories' => array(
             'CmsContentBlock' => 'Cms\View\Helper\CmsContentBlockFactory',
         ),
     ),
@@ -61,8 +62,8 @@ return array(
         ),
     ),
 
-    'acl' => array(
-        'admin'   => array(
+    'acl'             => array(
+        'admin' => array(
             'cms' => array('allow' => null),
         ),
     ),

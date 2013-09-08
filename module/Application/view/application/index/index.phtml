@@ -15,6 +15,6 @@
 
 $this->headTitle('application_head_home');
 
-$url = $this->url('home');
+$url = $this->url('home', array(), array(), true);
 
 echo $this->cmsContentBlock('application_index_index', $url);

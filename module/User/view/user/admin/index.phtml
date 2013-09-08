@@ -33,8 +33,8 @@ $this->pageTitle('user_page_admin');
 <tbody>
 <?php foreach ($this->userList as $user) : /* @var $user UserEntity */ ?>
 <?php
-    $urlEdit = $this->url('user-admin/action', array('action' => 'update', 'id' => $user->getId()));
-    $urlDelete = $this->url('user-admin/action', array('action' => 'delete', 'id' => $user->getId()));
+    $urlEdit = $this->url('user-admin/action', array('action' => 'update', 'id' => $user->getId()), true);
+    $urlDelete = $this->url('user-admin/action', array('action' => 'delete', 'id' => $user->getId()), true);
 ?>
 <tr>
 <td><?php echo $user->getEmail(); ?></td>

@@ -57,8 +57,8 @@ return array(
     'user_message_auth_forbidden'         => 'Leider dürfen Sie diese Seite nicht aufrufen. Da sind uns echt die Hände gebunden und wir dürfen keine Ausnahmen machen.',
     'user_message_registration'           => 'Sie sind schon registriert?',
     'user_message_login'                  => 'Sie sind noch nicht angemeldet?',
-    'user_message_not_logged_on'                  => 'Sie sind nicht angemeldet!',
-    'user_message_logged_on'                  => 'Sie sind angemeldet!',
+    'user_message_not_logged_on'          => 'Sie sind nicht angemeldet!',
+    'user_message_logged_on'              => 'Sie sind angemeldet!',
 
     /* Texts for the labels */
     'user_label_role'                     => 'Benutzergruppe',

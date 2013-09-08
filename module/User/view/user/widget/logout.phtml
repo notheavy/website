@@ -22,7 +22,7 @@ use User\Entity\UserEntity;
 $user = $this->identity; /* @var $user UserEntity */
 
 // prepare form
-$actionUrl = $this->url('user', array('action' => 'logout'));
+$actionUrl = $this->url('user', array('action' => 'logout'), true);
 ?>
 <div class="well">
 <h4><?php echo $this->translate('user_message_logged_on'); ?></h4>

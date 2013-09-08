@@ -29,6 +29,19 @@ $this->navigation('navigation')->menu()->setUlClass('nav navbar-nav');
 echo $this->bootstrapMenu($this->navigation('navigation')->menu()->renderMenu(null, array('maxDepth' => 1)));
 ?>
 </div>
+<ul class="nav pull-right">
+    <li class="dropdown">
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle"><?php echo $this->translate('application_menu_language'); ?> <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li <?php if ($this->lang == 'de') { echo 'class="active"'; } ?>>
+                <a href="<?php echo $this->url(null, array('lang' => 'de'), true); ?>"><?php echo $this->translate('application_menu_german'); ?></a>
+            </li>
+            <li <?php if ($this->lang == 'en') { echo 'class="active"'; } ?>>
+                <a href="<?php echo $this->url(null, array('lang' => 'en'), true); ?>"><?php echo $this->translate('application_menu_english'); ?></a>
+            </li>
+        </ul>
+    </li>
+</ul>
 </div>
 </div>
 </div>

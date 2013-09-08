@@ -20,6 +20,6 @@ $this->headScript()->appendFile(
     $this->basePath() . '/js/ckeditor/ckeditor.js', 'text/javascript'
 );
 
-$actionUrl = $this->url('blog-admin/action', array('action' => 'create'));
+$actionUrl = $this->url('blog-admin/action', array('action' => 'create'), true);
 
 echo $this->showForm($this->form, $actionUrl, 'form-horizontal');

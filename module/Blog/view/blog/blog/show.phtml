@@ -23,15 +23,9 @@ $blog = $this->blogData;  /* @var $blog BlogEntity */
 $this->headTitle($blog->getTitle());
 $this->pageTitle($blog->getTitle());
 
-$urlEdit    = $this->url(
-    'blog-admin/action', array('action' => 'update', 'id' => $blog->getId())
-);
-$urlDelete  = $this->url(
-    'blog-admin/action', array('action' => 'delete', 'id' => $blog->getId())
-);
-$urlComment = $this->url(
-    'blog/action', array('url' => $blog->getUrl())
-);
+$urlEdit    = $this->url('blog-admin/action', array('action' => 'update', 'id' => $blog->getId()), true);
+$urlDelete  = $this->url('blog-admin/action', array('action' => 'delete', 'id' => $blog->getId()), true);
+$urlComment = $this->url('blog/action', array('url' => $blog->getUrl()), true);
 ?>
 <?php if ($this->getHelperPluginManager()->has('commentShowLinks')) : ?>
 <?php echo $this->commentShowLinks($urlComment); ?>
@@ -39,7 +33,7 @@ $urlComment = $this->url(
 <?php echo $blog->getContent(); ?>
 <p><em><?php echo $this->translate('blog_label_date'); ?>: <?php echo $this->date($blog->getCdate()); ?></em></p>
 <p>
-<a href="<?php echo $this->url('blog'); ?>" class="btn"><?php echo $this->translate('blog_button_back'); ?></a>
+<a href="<?php echo $this->url('blog', array(), true); ?>" class="btn"><?php echo $this->translate('blog_button_back'); ?></a>
 <?php if ($this->userIsAllowed('blog-admin')): ?>
 <a href="<?php echo $urlEdit; ?>" class="btn"><?php echo $this->translate('blog_button_update'); ?></a>
 <a href="<?php echo $urlDelete; ?>" class="btn"><?php echo $this->translate('blog_button_delete'); ?></a>
