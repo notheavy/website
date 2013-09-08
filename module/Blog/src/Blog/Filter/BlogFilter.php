@@ -4,7 +4,7 @@
  *
  * @package    Blog
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -40,7 +40,7 @@ class BlogFilter extends InputFilter
                     'name'    => 'StringLength',
                     'options' => array(
                         'encoding' => 'UTF-8', 'min' => 5, 'max' => 128,
-                        'message'  => 'Überschrift nur 5 - 128 Zeichen erlaubt',
+                        'message'  => 'blog_message_title_length',
                     ),
                 ),
             ),

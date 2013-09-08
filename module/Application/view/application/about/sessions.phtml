@@ -4,7 +4,7 @@
  *
  * @package    Application
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -13,9 +13,9 @@
  * @package    Application
  */
 
-$this->headTitle('Sessions');
-$this->pageTitle('Spannende Sessions warten auf Sie');
+$this->headTitle('application_head_sessions');
 
 $url = $this->url('application', array(), array(), true);
-?>
-<?php echo $this->cmsContentBlock('application_about_sessions', $url); ?>
+
+echo $this->cmsContentBlock('application_about_sessions', $url);
+

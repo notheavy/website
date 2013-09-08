@@ -4,7 +4,7 @@
  *
  * @package    Blog
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -105,25 +105,28 @@ class BlogController extends AbstractActionController
         
         // get blog entries
         $blogList = $this->getBlogService()->fetchList($page, $maxPage);
+
+        // get translator
+        $translator = $this->getServiceLocator()->get('translator');
         
         // create feed
         $feed = new Feed();
-        $feed->setTitle('Zend\Together - Blog');
-        $feed->setFeedLink('http://zendtogether.com/blog/rss', 'atom');
+        $feed->setTitle($translator->translate('application_head_index') . ' - ' . $translator->translate('blog_head_list'));
+        $feed->setFeedLink($this->url()->fromRoute('blog/rss'), 'atom');
         $feed->addAuthor(array(
-            'name'  => 'Zend\Together',
-            'email' => 'info@zendtogether.com',
-            'uri'   => 'http://zendtogether.com',
+            'name'  => $translator->translate('application_head_index'),
+            'email' => 'info@zf-together.com',
+            'uri'   => 'http://www.zf-together.com',
         ));
-        $feed->setDescription('Zend\Together - Beiträge');
-        $feed->setLink('http://zendtogether.com');
+        $feed->setDescription($translator->translate('application_head_index') . ' - ' . $translator->translate('blog_head_list'));
+        $feed->setLink('http://www.zf-together.com');
         $feed->setDateModified(time());
         
         // add blog entries
         foreach ($blogList as $blog) {
             $entry = $feed->createEntry();
             $entry->setTitle($blog->getTitle());
-            $entry->setLink('http://zendtogether.com/blog/' . $blog->getUrl());
+            $entry->setLink($this->url()->fromRoute('blog/action', array('url' => '$blog->getUrl()')));
             $entry->setDescription($blog->getContent());
             $entry->setDateCreated(strtotime($blog->getCdate()));
             
@@ -133,7 +136,7 @@ class BlogController extends AbstractActionController
         // create feed model
         $feedmodel = new FeedModel();
         $feedmodel->setFeed($feed);
-        
+
         return $feedmodel;
     }
 }

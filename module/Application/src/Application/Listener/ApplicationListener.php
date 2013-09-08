@@ -4,7 +4,7 @@
  *
  * @package    Application
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -39,7 +39,8 @@ class ApplicationListener implements ListenerAggregateInterface
      * Attach to an event manager
      *
      * @param  EventManagerInterface $events
-     * @param  integer $priority
+     *
+     * @internal param int $priority
      */
     public function attach(EventManagerInterface $events)
     {
@@ -78,7 +79,8 @@ class ApplicationListener implements ListenerAggregateInterface
     /**
      * Listen to the "render" event and render additional layout segments
      *
-     * @param  MvcEvent $e
+     * @param \Zend\EventManager\EventInterface|\Zend\Mvc\MvcEvent $e
+     *
      * @return null
      */
     public function renderLayoutSegments(EventInterface $e)
@@ -108,7 +110,8 @@ class ApplicationListener implements ListenerAggregateInterface
     /**
      * Listen to the "dispatch" event and setup the localization
      *
-     * @param  MvcEvent $e
+     * @param \Zend\EventManager\EventInterface|\Zend\Mvc\MvcEvent $e
+     *
      * @return null
      */
     public function setupLocalization(EventInterface $e)
@@ -129,7 +132,8 @@ class ApplicationListener implements ListenerAggregateInterface
     /**
      * Listen to the "dispatch" event and add translation files
      *
-     * @param  MvcEvent $e
+     * @param \Zend\EventManager\EventInterface|\Zend\Mvc\MvcEvent $e
+     *
      * @return null
      */
     public function addValidatorTranslations(EventInterface $e)
@@ -147,7 +151,7 @@ class ApplicationListener implements ListenerAggregateInterface
                 ),
             )
         ));
-        
+
         AbstractValidator::setDefaultTranslator($translator);
     }
 }

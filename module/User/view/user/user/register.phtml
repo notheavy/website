@@ -4,7 +4,7 @@
  *
  * @package    User
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -13,14 +13,14 @@
  * @package    User
  */
 
-$this->headTitle('Registrieren');
-$this->pageTitle('Als neuer Benutzer registrieren');
+$this->headTitle('user_head_register');
+$this->pageTitle('user_page_register');
 
 $actionUrl = $this->url('user', array('action' => 'register'));
 
 echo $this->showForm($this->form, $actionUrl, 'form-horizontal');
 ?>
 <hr />
-<h3>Sie sind schon registriert?</h3>
+<h3><?php echo $this->translate('user_message_registration') ?></h3>
 <?php $url = $this->url('user', array('action' => 'login'))?>
-<a href="<?php echo $url; ?>" class="btn">Jetzt anmelden</a>
+<a href="<?php echo $url; ?>" class="btn"><?php echo $this->translate('user_button_login') ?></a>

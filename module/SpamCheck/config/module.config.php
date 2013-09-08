@@ -4,7 +4,7 @@
  *
  * @package    SpamCheck
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -30,7 +30,19 @@ return array(
             'SpamCheck' => 'SpamCheck\View\Helper\SpamCheckFactory',
         ),
     ),
-    
+
+    'translator'      => array(
+        'locale'                    => 'de',
+        'translation_file_patterns' => array(
+            array(
+                'type'        => 'phpArray',
+                'base_dir'    => realpath(__DIR__ . '/../language'),
+                'pattern'     => '%s.php',
+                'text_domain' => 'default',
+            ),
+        ),
+    ),
+
     'b8' => array(
         'config_b8' => array(
             'storage' => 'mysql',

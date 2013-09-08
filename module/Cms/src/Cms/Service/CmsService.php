@@ -4,7 +4,7 @@
  *
  * @package    Cms
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -14,6 +14,7 @@ namespace Cms\Service;
 
 use Cms\Form\ContentBlockForm;
 use Cms\Form\ContentBlockFormInterface;
+use Zend\Mvc\I18n\Translator;
 
 /**
  * Cms Service
@@ -22,6 +23,43 @@ use Cms\Form\ContentBlockFormInterface;
  */
 class CmsService implements CmsServiceInterface
 {
+    /**
+     * @var Translator
+     */
+    protected $translator;
+
+    /**
+     * Constructor
+     *
+     * @param  Translator $translator
+     */
+    public function __construct(Translator $translator)
+    {
+        $this->setTranslator($translator);
+    }
+
+    /**
+     * Sets comment translator
+     *
+     * @param  Translator $translator
+     * @return CmsService
+     */
+    public function setTranslator(Translator $translator = null)
+    {
+        $this->translator = $translator;
+        return $this;
+    }
+
+    /**
+     * Returns Translator
+     *
+     * @return Translator
+     */
+    public function getTranslator()
+    {
+        return $this->translator;
+    }
+
     /**
      * Load content block
      *
@@ -78,15 +116,15 @@ class CmsService implements CmsServiceInterface
         $form->addHiddenElement('block', $block);
         $form->addHiddenElement('content');
         $form->addButtonElement(
-            'cms_edit_' . $block, 'Bearbeiten', 
+            'cms_edit_' . $block, $this->getTranslator()->translate('cms_button_update'),
             'cmsEditContentBlock(\'' . $block . '\');', false
         );
         $form->addButtonElement(
-            'cms_save_' . $block, 'Speichern',
+            'cms_save_' . $block, $this->getTranslator()->translate('cms_button_save'),
             'cmsSaveContentBlock(\'' . $block . '\');'
         );
         $form->addButtonElement(
-            'cms_cancel_' . $block, 'Abbrechen',
+            'cms_cancel_' . $block, $this->getTranslator()->translate('cms_button_cancel'),
             'cmsCancelContentBlock(\'' . $block . '\');'
         );
         $form->prepare();

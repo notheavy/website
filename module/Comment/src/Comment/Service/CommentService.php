@@ -4,7 +4,7 @@
  *
  * @package    Comment
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -353,7 +353,7 @@ class CommentService implements EventManagerAwareInterface, CommentServiceInterf
         
         // check for invalid data
         if (!$form->isValid()) {
-            $this->setMessage('Bitte Eingaben überprüfen!');
+            $this->setMessage('application_message_check_input');
             
             // save form data
             $namespace->createForm = $data;
@@ -397,7 +397,7 @@ class CommentService implements EventManagerAwareInterface, CommentServiceInterf
                 $this->getTable('comment')->update($saveData, array('id' => $id));
             }
         } catch (InvalidQueryException $e) {
-            $this->setMessage('Kommentar konnte nicht gespeichert werden!');
+            $this->setMessage('comment_message_saving_failed');
             
             // save form data
             $namespace->createForm = $data;
@@ -413,9 +413,9 @@ class CommentService implements EventManagerAwareInterface, CommentServiceInterf
         
         // set success message
         if ($mode == 'create' && $newStatus != 'approved') {
-            $this->setMessage('Kommentar wartet auf Freischaltung!');
+            $this->setMessage('comment_message_saving_approval');
         } else {
-            $this->setMessage('Kommentar wurde gespeichert!');
+            $this->setMessage('comment_message_saving_successful');
         }
         
         // return comment
@@ -426,7 +426,6 @@ class CommentService implements EventManagerAwareInterface, CommentServiceInterf
      * Delete existing comment
      *
      * @param integer $id comment id
-     * @param array $data input data
      * @return CommentEntityInterface
      */
     public function delete($id)
@@ -442,7 +441,7 @@ class CommentService implements EventManagerAwareInterface, CommentServiceInterf
         }
 
         // set success message
-        $this->setMessage('Der Kommentar wurde gelöscht!');
+        $this->setMessage('comment_message_deleting_successful');
         
         // return result
         return true;
@@ -468,7 +467,7 @@ class CommentService implements EventManagerAwareInterface, CommentServiceInterf
         try {
             $this->getTable('comment')->update($updateData, array('id' => $id));
         } catch (InvalidQueryException $e) {
-            $this->setMessage('Kommentar konnte nicht gespeichert werden!');
+            $this->setMessage('comment_message_saving_failed');
             return false;
         }
 
@@ -476,7 +475,7 @@ class CommentService implements EventManagerAwareInterface, CommentServiceInterf
         $comment = $this->fetchSingleById($id);
 
         // set success message
-        $this->setMessage('Der Status wurde geändert!');
+        $this->setMessage('comment_message_saving_status');
         
         // return comment
         return $comment;

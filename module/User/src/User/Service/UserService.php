@@ -4,7 +4,7 @@
  *
  * @package    User
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -270,7 +270,7 @@ class UserService implements
         
         // check for invalid data
         if (!$form->isValid()) {
-            $this->setMessage('Bitte Eingaben überprüfen!');
+            $this->setMessage('application_message_check_input');
             return false;
         }
         
@@ -289,7 +289,7 @@ class UserService implements
         
         // set values
         if ($mode == 'register') {
-            $user->setRole('customer');
+            $user->setRole('participant');
         }
         
         // get insert data
@@ -306,7 +306,7 @@ class UserService implements
                 $this->getTable()->update($saveData, array('id' => $id));
             }
         } catch (InvalidQueryException $e) {
-            $this->setMessage('Benutzer konnte nicht gespeichert werden!');
+            $this->setMessage('user_message_saving_failed');
             return false;
         }
 
@@ -314,7 +314,7 @@ class UserService implements
         $user = $this->fetchSingleById($id);
         
         // set success message
-        $this->setMessage('Die Daten wurden gespeichert!');
+        $this->setMessage('user_message_saving_successful');
         
         // return user
         return $user;
@@ -324,7 +324,6 @@ class UserService implements
      * Delete existing user
      *
      * @param integer $id user id
-     * @param array $data input data
      * @return UserEntityInterface
      */
     public function delete($id)
@@ -340,7 +339,7 @@ class UserService implements
         }
 
         // set success message
-        $this->setMessage('Der Benutzer wurde gelöscht!');
+        $this->setMessage('user_message_deleting_successful');
         
         // return result
         return true;
@@ -360,7 +359,7 @@ class UserService implements
         
         // check for invalid data
         if (!$form->isValid()) {
-            $this->setMessage('Bitte Eingaben überprüfen!');
+            $this->setMessage('application_message_check_input');
             return false;
         }
         
@@ -409,7 +408,7 @@ class UserService implements
         $authNamespace->getManager()->destroy();
         
         // set message
-        $this->setMessage('Sie wurden abgemeldet!');
+        $this->setMessage('user_message_auth_logout_successful');
         
         return true;
     }

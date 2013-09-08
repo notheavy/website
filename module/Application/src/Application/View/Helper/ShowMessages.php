@@ -4,7 +4,7 @@
  *
  * @package    Application
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -62,7 +62,7 @@ class ShowMessages extends AbstractHelper
             // create output
             $output.= '<div class="alert">';
             $output.= '<button class="close" data-dismiss="alert" type="button">×</button>';
-            $output.= $message;
+            $output.= $this->getView()->translate($message);
             $output.= '</div>';
         }
 

@@ -4,7 +4,7 @@
  *
  * @package    Application
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -13,9 +13,8 @@
  * @package    Application
  */
 
-$this->headTitle('Über uns');
-$this->pageTitle('Zend\Together - was ist das?');
+$this->headTitle('application_head_about');
 
 $url = $this->url('application', array(), array(), true);
-?>
-<?php echo $this->cmsContentBlock('application_about_index', $url); ?>
+
+echo $this->cmsContentBlock('application_about_index', $url);

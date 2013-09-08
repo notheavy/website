@@ -4,7 +4,7 @@
  *
  * @package    Application
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -13,15 +13,9 @@
  * @package    Application
  */
 
-$this->headTitle('Ihr Team');
-$this->pageTitle('Ihr Team ist immer für Sie da');
+$this->headTitle('application_head_location');
 
 $url = $this->url('application', array(), array(), true);
-?>
-<?php if ($this->getHelperPluginManager()->has('commentShowLinks')) : ?>
-<?php echo $this->commentShowLinks($url); ?>
-<?php endif; ?>
-<?php echo $this->cmsContentBlock('application_about_team', $url); ?>
-<?php if ($this->getHelperPluginManager()->has('commentShowComments')) : ?>
-<?php echo $this->commentShowComments($url); ?>
-<?php endif; ?>
+
+echo $this->cmsContentBlock('application_about_team', $url);
+

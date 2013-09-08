@@ -4,7 +4,7 @@
  *
  * @package    User
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -111,42 +111,66 @@ return array(
             __DIR__ . '/../view',
         ),
     ),
-    
+
+    'translator'      => array(
+        'locale'                    => 'de',
+        'translation_file_patterns' => array(
+            array(
+                'type'        => 'phpArray',
+                'base_dir'    => realpath(__DIR__ . '/../language'),
+                'pattern'     => '%s.php',
+                'text_domain' => 'default',
+            ),
+        ),
+    ),
+
+    'translator'      => array(
+        'locale'                    => 'de',
+        'translation_file_patterns' => array(
+            array(
+                'type'        => 'phpArray',
+                'base_dir'    => realpath(__DIR__ . '/../language'),
+                'pattern'     => '%s.php',
+                'text_domain' => 'default',
+            ),
+        ),
+    ),
+
     'navigation' => array(
         'default' => array(
 /*
             'user' => array(
                 'type'       => 'mvc',
                 'order'      => '700',
-                'label'      => 'Benutzer',
+                'label'      => 'blog_user_index',
                 'route'      => 'user',
                 'controller' => 'user',
                 'action'     => 'index',
                 'pages'      => array(
                     'register' => array(
                         'type'       => 'mvc',
-                        'label'      => 'Registrieren',
+                        'label'      => 'blog_user_register',
                         'route'      => 'user',
                         'controller' => 'user',
                         'action'     => 'register',
                     ),
                     'login' => array(
                         'type'       => 'mvc',
-                        'label'      => 'Anmelden',
+                        'label'      => 'blog_user_login',
                         'route'      => 'user',
                         'controller' => 'user',
                         'action'     => 'login',
                     ),
                     'user-admin' => array(
                         'type'       => 'mvc',
-                        'label'      => 'Benutzerverwaltung',
+                        'label'      => 'blog_user_admin',
                         'route'      => 'user-admin',
                         'controller' => 'user-admin',
                         'action'     => 'index',
                     ),
                     'update' => array(
                         'type'       => 'mvc',
-                        'label'      => 'Bearbeiten',
+                        'label'      => 'blog_user_update',
                         'visible'    => false,
                         'route'      => 'user-admin',
                         'controller' => 'user-admin',
@@ -154,7 +178,7 @@ return array(
                     ),
                     'delete' => array(
                         'type'       => 'mvc',
-                        'label'      => 'Löschen',
+                        'label'      => 'blog_user_delete',
                         'visible'    => false,
                         'route'      => 'user-admin',
                         'controller' => 'user-admin',
@@ -173,7 +197,7 @@ return array(
                 'deny'  => array('logout', 'update'),
             ),
         ),
-        'customer' => array(
+        'participant' => array(
             'user' => array(
                 'allow' => null,
                 'deny'  => array('login', 'register'),

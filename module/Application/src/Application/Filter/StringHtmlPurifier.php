@@ -4,7 +4,7 @@
  *
  * @package    Application
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -36,8 +36,7 @@ class StringHtmlPurifier extends AbstractFilter
     /**
      * Setup for HTMLPurifier
      *
-     * @param  string $delimiter
-     * @return void
+     * @return \Application\Filter\StringHtmlPurifier
      */
     public function __construct()
     {

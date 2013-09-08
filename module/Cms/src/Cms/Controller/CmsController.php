@@ -4,7 +4,7 @@
  *
  * @package    Cms
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -85,7 +85,7 @@ class CmsController extends AbstractActionController
         $this->getCmsService()->saveBlock($data['block'], $data['content']);
         
         // add message
-        $this->flashMessenger()->addMessage('Der Block wurde gespeichert!');
+        $this->flashMessenger()->addMessage('cms_message_saving_successful');
         
         // redirect to url
         return $this->redirect()->toUrl($data['url']);

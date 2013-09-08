@@ -4,7 +4,7 @@
  *
  * @package    User
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -13,8 +13,8 @@
  * @package    User
  */
 
-$this->headTitle('Benutzer löschen');
-$this->pageTitle('Den ausgewählten Benutzer löschen');
+$this->headTitle('user_head_delete');
+$this->pageTitle('user_page_delete');
 
 // set user entity
 $user = $this->user; /* @var $user UserEntity */
@@ -25,19 +25,17 @@ $actionUrl = $this->url('user-admin/action', array(), array(), true);
 <table class="table table-data">
 <tbody>
 <tr>
-<th>Name:</th>
+<th><?php echo $this->translate('user_label_name'); ?>:</th>
 <td><?php echo $name; ?></td>
 </tr>
 <tr>
-<th>E-Mail: &nbsp;</th>
+<th><?php echo $this->translate('user_label_email'); ?>: &nbsp;</th>
 <td><?php echo $user->getEmail(); ?></td>
 </tr>
 <tr>
-<th>Rolle:</th>
-<td><?php echo $user->getRoleName(); ?></td>
+<th><?php echo $this->translate('user_label_role'); ?>:</th>
+<td><?php echo $this->translate($user->getRoleName()); ?></td>
 </tr>
 </tbody>
 </table>
 <?php echo $this->showForm($this->form, $actionUrl, 'form-horizontal'); ?>
-<hr />
-<a href="<?php echo $this->url('user-admin'); ?>" class="btn">Benutzerliste</a>

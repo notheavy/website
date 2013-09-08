@@ -4,7 +4,7 @@
  *
  * @package    User
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -62,9 +62,12 @@ class UserIsAllowed extends AbstractHelper
     {
         return $this->acl;
     }
-    
+
     /**
      * Checks if current role is allowed to access resource with privilege
+     *
+     * @param        $resource
+     * @param string $privilege
      *
      * @return boolean
      */

@@ -4,7 +4,7 @@
  *
  * @package    Comment
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -22,9 +22,9 @@ use Zend\Filter\StaticFilter;
 class CommentEntity implements CommentEntityInterface
 {
     protected $statusNames = array(
-        'new'      => 'neu',
-        'blocked'  => 'gesperrt',
-        'approved' => 'genehmigt',
+        'new'      => 'comment_option_status_new',
+        'blocked'  => 'comment_option_status_blocked',
+        'approved' => 'comment_option_status_approved',
     );
     
     protected $id;

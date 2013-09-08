@@ -4,7 +4,7 @@
  *
  * @package    Blog
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -18,39 +18,36 @@ use Blog\Entity\BlogEntity;
  * @package    Blog
  */
 
-$this->headTitle('Blogbeiträge verwalten');
-$this->pageTitle('Blogbeiträge verwalten');
+$this->headTitle('blog_head_admin');
+$this->pageTitle('blog_page_admin');
+
 ?>
 <p class="pull-center">
 <?php $url = $this->url('blog-admin/action', array('action' => 'create')); ?>
-<a href="<?php echo $url; ?>" class="btn">Blogbeitrag anlegen</a>
+<a href="<?php echo $url; ?>" class="btn"><?php echo $this->translate('blog_button_create'); ?></a>
 </p>
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
 <tr>
-<th>Überschrift</th>
-<th>Datum</th>
-<th>Anreißer</th>
-<th width="170">Optionen</th>
+<th><?php echo $this->translate('blog_label_title'); ?></th>
+<th><?php echo $this->translate('blog_label_date'); ?></th>
+<th><?php echo $this->translate('blog_label_teaser'); ?></th>
+<th width="180">&nbsp;</th>
 </tr>
 </thead>
 <tbody>
 <?php foreach ($this->blogList as $blog) : /* @var $blog BlogEntity */ ?>
 <?php
-$urlEdit = $this->url(
-    'blog-admin/action', array('action' => 'update', 'id' => $blog->getId())
-);
-$urlDelete = $this->url(
-    'blog-admin/action', array('action' => 'delete', 'id' => $blog->getId())
-);
+$urlEdit   = $this->url('blog-admin/action', array('action' => 'update', 'id' => $blog->getId()));
+$urlDelete = $this->url('blog-admin/action', array('action' => 'delete', 'id' => $blog->getId()));
 ?>
 <tr>
 <td><?php echo $blog->getTitle(); ?></td>
 <td><?php echo $this->date($blog->getCdate()); ?></td>
 <td><?php echo $blog->getTeaser(); ?></td>
 <td>
-<a href="<?php echo $urlEdit; ?>" class="btn">Ändern</a>
-<a href="<?php echo $urlDelete; ?>" class="btn">Löschen</a>
+<a href="<?php echo $urlEdit; ?>" class="btn"><?php echo $this->translate('blog_button_update'); ?></a>
+<a href="<?php echo $urlDelete; ?>" class="btn"><?php echo $this->translate('blog_button_delete'); ?></a>
 </td>
 </tr>
 <?php endforeach; ?>

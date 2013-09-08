@@ -4,7 +4,7 @@
  *
  * @package    Comment
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -25,7 +25,7 @@ $this->headScript()->appendFile(
 ?>
 <hr />
 <div id="comments">
-<h3>Kommentare</h3>
+<h3><?php echo $this->translate('comment_page_list') ?></h3>
 <?php if ($this->commentList->count() > 0) :?>
 <?php foreach($this->commentList as $comment) :  /* @var $comment CommentEntity */ ?>
 <hr />
@@ -48,14 +48,13 @@ $this->headScript()->appendFile(
 </blockquote>
 <?php endforeach; ?>
 <?php else: ?>
-<p>Noch keine Kommentare vorhanden</p>
+<p><?php echo $this->translate('comment_message_no_entries') ?></p>
 <?php endif; ?>
 </div>
 <hr />
 <div id="comment-form">
-<h3>Neuen Kommentar schreiben</h3>
-<p>Nur der <strong>Name</strong> wird beim Kommentar ausgegeben. 
-Die <strong>E-Mail-Adresse</strong> wird nicht ausgegeben.</p>
+<h3><?php echo $this->translate('comment_page_create') ?></h3>
+<p><?php echo $this->translate('comment_message_notes') ?></p>
 <br />
 <?php 
 $actionUrl = $this->url('comment', array('action' => 'add'));

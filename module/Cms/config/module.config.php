@@ -4,7 +4,7 @@
  *
  * @package    Cms
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -38,8 +38,8 @@ return array(
     ),
     
     'service_manager' => array(
-        'invokables' => array(
-            'Cms\Service\Cms' => 'Cms\Service\CmsService',
+        'factories' => array(
+            'Cms\Service\Cms' => 'Cms\Service\CmsServiceFactory',
         ),
     ),
     
@@ -48,7 +48,19 @@ return array(
             'CmsContentBlock' => 'Cms\View\Helper\CmsContentBlockFactory',
         ),
     ),
-    
+
+    'translator'      => array(
+        'locale'                    => 'de',
+        'translation_file_patterns' => array(
+            array(
+                'type'        => 'phpArray',
+                'base_dir'    => realpath(__DIR__ . '/../language'),
+                'pattern'     => '%s.php',
+                'text_domain' => 'default',
+            ),
+        ),
+    ),
+
     'acl' => array(
         'admin'   => array(
             'cms' => array('allow' => null),

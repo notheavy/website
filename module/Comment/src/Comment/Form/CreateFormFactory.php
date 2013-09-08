@@ -4,7 +4,7 @@
  *
  * @package    Comment
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -37,8 +37,8 @@ class CreateFormFactory implements FactoryInterface
         $form->addEmailElement();
         $form->addNameElement();
         $form->addMessageElement();
-        $form->addSubmitElement('save', 'Speichern');
-        $form->addSubmitElement('cancel', 'Abbrechen');
+        $form->addSubmitElement('save', 'comment_button_save');
+        $form->addSubmitElement('cancel', 'comment_button_cancel');
         $form->setInputFilter($inputFilterManager->get('Comment\Filter\Comment'));
         $form->setValidationGroup(array(
             'url', 'email', 'name', 'message', 'save', 'cancel'

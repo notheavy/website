@@ -5,7 +5,7 @@
         "conference",
         "zf2"
     ],
-    "homepage": "http://zendtogether.com/",
+    "homepage": "http://www.zf-together.com/",
     "require": {
         "php": ">=5.3.3",
         "zendframework/zendframework": "2.2.*",

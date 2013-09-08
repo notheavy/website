@@ -4,7 +4,7 @@
  *
  * @package    Application
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -17,11 +17,9 @@ return array(
         'Application',
         'Blog',
         'User',
-//        'Pizza',
         'Comment',
         'SpamCheck',
         'Cms',
-//        'Shop',
         'ZendDeveloperTools',
     ),
     'module_listener_options' => array(

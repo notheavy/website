@@ -4,7 +4,7 @@
  *
  * @package    Application
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -17,34 +17,72 @@
     <div class="container">
         <div class="row">
             <div class="span3">
-                <h5>Über Zend\Together</h5>
+                <h5><?php echo $this->translate('application_menu_service'); ?></h5>
                 <ul class="unstyled">
-                    <li><a href="<?php echo $this->url('application', array('controller' => 'about', 'action' => 'speaker')) ?>">Sprecher</a></li>
-                    <li><a href="<?php echo $this->url('application', array('controller' => 'about', 'action' => 'sessions')) ?>">Sessions</a>
-                    <li><a href="<?php echo $this->url('application', array('controller' => 'about', 'action' => 'location')) ?>">Veranstaltungsort</a></li>
-                    <li><a href="<?php echo $this->url('application', array('controller' => 'about', 'action' => 'tickets')) ?>">Tickets</a></li>
-                    <li><a href="<?php echo $this->url('application', array('controller' => 'about', 'action' => 'imprint')) ?>">Impressum</a></li>
+                    <li>
+                        <a href="<?php echo $this->url('application', array('controller' => 'about', 'action' => 'speaker')) ?>">
+                            <?php echo $this->translate('application_menu_speaker'); ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo $this->url('application', array('controller' => 'about', 'action' => 'sessions')) ?>">
+                            <?php echo $this->translate('application_menu_sessions'); ?>
+                        </a>
+                    <li>
+                        <a href="<?php echo $this->url('application', array('controller' => 'about', 'action' => 'location')) ?>">
+                            <?php echo $this->translate('application_menu_location'); ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo $this->url('application', array('controller' => 'about', 'action' => 'tickets')) ?>">
+                            <?php echo $this->translate('application_menu_tickets'); ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo $this->url('application', array('controller' => 'about', 'action' => 'imprint')) ?>">
+                            <?php echo $this->translate('application_menu_imprint'); ?>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="span3">
-                <h5>Social Media</h5>
+                <h5><?php echo $this->translate('application_menu_socialmedia'); ?></h5>
                 <ul class="unstyled">
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">Google+</a></li>
-                    <li><a href="#">WasAuchImmer</a></li>
+                    <li>
+                        <a href="#">
+                            <span class="icon-facebook-sign"></span><?php echo $this->translate('application_menu_facebook'); ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon-google-plus-sign"></span><?php echo $this->translate('application_menu_googleplus'); ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon-twitter-sign"></span><?php echo $this->translate('application_menu_twitter'); ?>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="span3">
-                <h5>Links</h5>
+                <h5><?php echo $this->translate('application_menu_links'); ?></h5>
                 <ul class="unstyled">
-                    <li><a href="#">Zend Framework</a></li>
-                    <li><a href="#">Nordakademie</a></li>
-                    <li><a href="#">...</a></li>
+                    <li>
+                        <a href="#">
+                            <?php echo $this->translate('application_menu_zendframework'); ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            ...
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="span3">
-                <h5>Logos</h5>
-                Hier nochmal das Logo und so einbinden?
+                <h5><?php echo $this->translate('application_menu_poweredby'); ?></h5>
+                Hier nochmal ein paar Logos und so einbinden?
             </div>
         </div>
     </div>

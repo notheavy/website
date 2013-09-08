@@ -4,7 +4,7 @@
  *
  * @package    User
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -25,15 +25,15 @@ $user = $this->identity; /* @var $user UserEntity */
 $actionUrl = $this->url('user', array('action' => 'logout'));
 ?>
 <div class="well">
-<h4>Sie sind angemeldet</h4>
+<h4><?php echo $this->translate('user_message_logged_on'); ?></h4>
 <table style="width: 100%;" class="table table-data">
 <tbody>
 <tr>
-<th>E-Mail:</th>
+<th><?php echo $this->translate('user_label_email'); ?>:</th>
 <td><?php echo $user->getEmail(); ?></td>
 </tr>
 <tr>
-<th>Name:</th>
+<th><?php echo $this->translate('user_label_name'); ?>:</th>
 <td>
 <?php echo $user->getFirstname(); ?> <?php echo $user->getLastname(); ?>
 </td>

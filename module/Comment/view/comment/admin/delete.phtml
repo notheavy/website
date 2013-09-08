@@ -4,7 +4,7 @@
  *
  * @package    Comment
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -18,8 +18,8 @@ use Comment\Entity\CommentEntity;
  * @package    Comment
  */
 
-$this->headTitle('Kommentar löschen');
-$this->pageTitle('Einen Kommentar löschen');
+$this->headTitle('comment_head_delete');
+$this->pageTitle('comment_page_delete');
 
 // set comment entity
 $comment = $this->comment; /* @var $comment CommentEntity */
@@ -30,27 +30,27 @@ $url = $comment->getUrl();
 <table class="table table-data">
 <tbody>
 <tr>
-<th>Datum</th>
+<th><?php echo $this->translate('comment_label_date'); ?></th>
 <td><?php echo $this->date($comment->getCdate()); ?></td>
 </tr>
 <tr>
-<th>Url</th>
+<th><?php echo $this->translate('comment_label_url'); ?></th>
 <td><a href="<?php echo $url; ?>"><?php echo $url; ?></a></td>
 </tr>
 <tr>
-<th>Status</th>
+<th><?php echo $this->translate('comment_label_status'); ?></th>
 <td><?php echo $comment->getStatusName(); ?></td>
 </tr>
 <tr>
-<th>E-Mail-Adresse</th>
+<th><?php echo $this->translate('comment_label_email'); ?></th>
 <td><?php echo $comment->getEmail(); ?></td>
 </tr>
 <tr>
-<th>Name</th>
+<th><?php echo $this->translate('comment_label_name'); ?></th>
 <td><?php echo $comment->getName(); ?></td>
 </tr>
 <tr>
-<th>Kommentar</th>
+<th><?php echo $this->translate('comment_label_message'); ?></th>
 <td><?php echo $comment->getMessage(); ?></td>
 </tr>
 </tbody>

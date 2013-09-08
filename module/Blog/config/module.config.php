@@ -4,7 +4,7 @@
  *
  * @package    Blog
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -130,51 +130,72 @@ return array(
             'ViewFeedStrategy',
         ),
     ),
-    
+
+    'translator'      => array(
+        'locale'                    => 'de',
+        'translation_file_patterns' => array(
+            array(
+                'type'        => 'phpArray',
+                'base_dir'    => realpath(__DIR__ . '/../language'),
+                'pattern'     => '%s.php',
+                'text_domain' => 'default',
+            ),
+        ),
+    ),
+
     'navigation' => array(
         'default' => array(
             'blog' => array(
-                'type'       => 'mvc',
-                'order'      => '200',
-                'label'      => 'Blog',
-                'route'      => 'blog',
-                'controller' => 'blog',
-                'action'     => 'index',
+                'type'       => 'uri',
+                'order'      => '800',
+                'label'      => 'blog_menu_index',
+                'uri'        => '#',
                 'pages'      => array(
+                    'blog' => array(
+                        'type'       => 'mvc',
+                        'label'      => 'blog_menu_list',
+                        'route'      => 'blog',
+                        'controller' => 'blog',
+                        'action'     => 'index',
+                    ),
                     'show' => array(
                         'type'       => 'mvc',
-                        'label'      => 'Anzeigen',
+                        'label'      => 'blog_menu_show',
                         'route'      => 'blog',
                         'controller' => 'blog',
                         'action'     => 'show',
+                        'visible'    => false,
                     ),
                     'blog-admin' => array(
                         'type'       => 'mvc',
-                        'label'      => 'Blogverwaltung',
+                        'label'      => 'blog_menu_admin',
                         'route'      => 'blog-admin',
                         'controller' => 'blog-admin',
                         'action'     => 'index',
                     ),
                     'create' => array(
                         'type'       => 'mvc',
-                        'label'      => 'Anlegen',
+                        'label'      => 'blog_menu_create',
                         'route'      => 'blog-admin',
                         'controller' => 'blog-admin',
                         'action'     => 'create',
+                        'visible'    => false,
                     ),
                     'update' => array(
                         'type'       => 'mvc',
-                        'label'      => 'Bearbeiten',
+                        'label'      => 'blog_menu_update',
                         'route'      => 'blog-admin',
                         'controller' => 'blog-admin',
                         'action'     => 'update',
+                        'visible'    => false,
                     ),
                     'delete' => array(
                         'type'       => 'mvc',
-                        'label'      => 'Löschen',
+                        'label'      => 'blog_menu_delete',
                         'route'      => 'blog-admin',
                         'controller' => 'blog-admin',
                         'action'     => 'delete',
+                        'visible'    => false,
                     ),
                 ),
             ),

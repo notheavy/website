@@ -4,7 +4,7 @@
  *
  * @package    User
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -18,35 +18,36 @@ use User\Entity\UserEntity;
  * @package    User
  */
 
+$this->headTitle('user_head_index');
+$this->pageTitle('user_page_index');
+
 // set user entity
 $user = $this->identity; /* @var $user UserEntity */
 $name = $user->getFirstname() . ' ' . $user->getLastname();
 
-$this->headTitle('Benutzer anzeigen');
-$this->pageTitle('Schön, dass Sie da sind, ' . $name);
 ?>
 <table class="table table-data">
 <tbody>
 <tr>
-<th>E-Mail:</th>
+<th><?php echo $this->translate('user_label_email'); ?>:</th>
 <td><?php echo $user->getEmail(); ?></td>
 </tr>
 <tr>
-<th>Name:</th>
+<th><?php echo $this->translate('user_label_name'); ?>:</th>
 <td><?php echo $name; ?></td>
 </tr>
 <tr>
-<th>Rolle:</th>
-<td><?php echo $user->getRoleName(); ?></td>
+<th><?php echo $this->translate('user_label_role'); ?>:</th>
+<td><?php echo $this->translate($user->getRoleName()); ?></td>
 </tr>
 <tr>
 <th>&nbsp;</th>
 <td>
 <?php if ($this->userIsAllowed('user-admin')): ?>
 <?php $url = $this->url('user-admin'); ?>
-<a href="<?php echo $url; ?>" class="btn">Benutzer verwalten</a>
+<a href="<?php echo $url; ?>" class="btn"><?php echo $this->translate('user_button_admin') ?></a>
 <?php endif; ?>
-<a href="/" class="btn">Zurück zur Homepage</a>
+<a href="/" class="btn"><?php echo $this->translate('application_button_home') ?></a>
 </td>
 </tr>
 </tbody>

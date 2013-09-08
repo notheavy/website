@@ -4,7 +4,7 @@
  *
  * @package    Application
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -13,18 +13,14 @@
  * @package    Application
  */
 
-$this->headTitle('Server Fehler');
-$this->pageTitle('Server Fehler');
-?>
-<p>Leider hat unser Server einen kleinen Schluckauf und konnte die Anfrage nicht ohne Fehler verarbeiten.</p>
-<p class="pull-center"><a href="/" class="btn">Zur Startseite</a></p>
-<hr />
-<div class="alert alert-error">
-<h2>Es ist ein interner Server Fehler aufgetreten.</h2>
-<p>Bitte später noch einmal versuchen.</p>
-</div>
+$this->headTitle('application_head_error');
 
-<?php if (isset($this->display_exceptions) && $this->display_exceptions): ?>
+$url = $this->url('application', array(), array(), true);
+
+echo $this->cmsContentBlock('application_error_500', $url);
+
+if (isset($this->display_exceptions) && $this->display_exceptions):
+?>
     <?php if(isset($this->exception) && $this->exception instanceof Exception): ?>
         <?php $e = $this->exception->getPrevious(); ?>
         <div class="well">

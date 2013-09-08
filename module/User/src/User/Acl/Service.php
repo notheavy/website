@@ -4,7 +4,7 @@
  *
  * @package    User
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -125,8 +125,8 @@ class Service
         // create acl
         $acl = new Acl();
         $acl->addRole('guest');
-        $acl->addRole('customer', 'guest');
-        $acl->addRole('staff', 'customer');
+        $acl->addRole('participant', 'guest');
+        $acl->addRole('staff', 'participant');
         $acl->addRole('admin', 'staff');
         
         // loop through role data

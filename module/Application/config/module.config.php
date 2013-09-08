@@ -4,7 +4,7 @@
  *
  * @package    Application
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -56,6 +56,9 @@ return array(
         'factories' => array(
             'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory'
         ),
+        'aliases' => array(
+            'translator' => 'MvcTranslator',
+        ),
     ),
     
     'filters' => array(
@@ -67,9 +70,10 @@ return array(
     
     'view_helpers' => array(
         'invokables'=> array(
-            'pageTitle'    => 'Application\View\Helper\PageTitle',
-            'showForm'     => 'Application\View\Helper\ShowForm',
-            'date'         => 'Application\View\Helper\Date',
+            'bootstrapMenu' => 'Application\View\Helper\BootstrapMenu',
+            'pageTitle'     => 'Application\View\Helper\PageTitle',
+            'showForm'      => 'Application\View\Helper\ShowForm',
+            'date'          => 'Application\View\Helper\Date',
         ),
         'factories'=> array(
             'showMessages' => 'Application\View\Helper\ShowMessagesFactory',
@@ -96,34 +100,66 @@ return array(
             __DIR__ . '/../view',
         ),
     ),
-    
+
+    'translator'      => array(
+        'locale'                    => 'de',
+        'translation_file_patterns' => array(
+            array(
+                'type'        => 'phpArray',
+                'base_dir'    => realpath(__DIR__ . '/../language'),
+                'pattern'     => '%s.php',
+                'text_domain' => 'default',
+            ),
+        ),
+        'cache'                     => array(
+            'adapter' => array(
+                'name'    => 'filesystem',
+                'options' => array(
+                    'cache_dir' => APPLICATION_ROOT . '/data/cache',
+                    'ttl'       => 5,
+                ),
+            ),
+            'plugins' => array(
+                'serializer'
+            ),
+        ),
+    ),
+
     'session' => array(
-//        'save_path' => realpath(APPLICATION_ROOT . '/data/session'),
+        'save_path' => realpath(APPLICATION_ROOT . '/data/session'),
         'name'      => 'ZEND_TOGETHER_SESSION',
     ),
     
     'navigation' => array(
         'default' => array(
+            'about' => array(
+                'type'       => 'mvc',
+                'order'      => '100',
+                'label'      => 'application_menu_about',
+                'route'      => 'application',
+                'controller' => 'about',
+                'action'     => 'index',
+            ),
             'speaker' => array(
                 'type'       => 'mvc',
-                'order'      => '300',
-                'label'      => 'Sprecher',
+                'order'      => '200',
+                'label'      => 'application_menu_speaker',
                 'route'      => 'application',
                 'controller' => 'about',
                 'action'     => 'speaker',
             ),
             'sessions' => array(
                 'type'       => 'mvc',
-                'order'      => '400',
-                'label'      => 'Sessions',
+                'order'      => '300',
+                'label'      => 'application_menu_sessions',
                 'route'      => 'application',
                 'controller' => 'about',
                 'action'     => 'sessions',
             ),
             'location' => array(
                 'type'       => 'mvc',
-                'order'      => '500',
-                'label'      => 'Veranstaltungsort',
+                'order'      => '400',
+                'label'      => 'application_menu_location',
                 'route'      => 'application',
                 'controller' => 'about',
                 'action'     => 'location',
@@ -131,36 +167,34 @@ return array(
             'tickets' => array(
                 'type'       => 'mvc',
                 'order'      => '500',
-                'label'      => 'Tickets',
+                'label'      => 'application_menu_tickets',
                 'route'      => 'application',
                 'controller' => 'about',
                 'action'     => 'tickets',
             ),
             'service' => array(
-                'type'       => 'mvc',
-                'order'      => '900',
-                'label'      => 'Über Zend\Together',
-                'route'      => 'application',
-                'controller' => 'about',
-                'action'     => 'index',
+                'type'       => 'uri',
+                'order'      => '700',
+                'label'      => 'application_menu_service',
+                'uri'        => '#',
                 'pages'      => array(
                     'team' => array(
                         'type'       => 'mvc',
-                        'label'      => 'Team',
+                        'label'      => 'application_menu_team',
                         'route'      => 'application',
                         'controller' => 'about',
                         'action'     => 'team',
                     ),
                     'contact' => array(
                         'type'       => 'mvc',
-                        'label'      => 'Kontakt',
+                        'label'      => 'application_menu_contact',
                         'route'      => 'application',
                         'controller' => 'about',
                         'action'     => 'contact',
                     ),
                     'imprint' => array(
                         'type'       => 'mvc',
-                        'label'      => 'Impressum',
+                        'label'      => 'application_menu_imprint',
                         'route'      => 'application',
                         'controller' => 'about',
                         'action'     => 'imprint',

@@ -4,7 +4,7 @@
  *
  * @package    Cms
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -60,11 +60,14 @@ class CmsContentBlock extends AbstractHelper
     {
         return $this->cmsService;
     }
-    
+
     /**
      * Returns itself
      *
-     * @return Cms 
+     * @param $block
+     * @param $url
+     *
+     * @return Cms
      */
     public function __invoke($block, $url)
     {
