@@ -12,6 +12,7 @@
  */
 namespace Cms\Service;
 
+use Locale;
 use Cms\Form\ContentBlockForm;
 use Cms\Form\ContentBlockFormInterface;
 use Zend\Mvc\I18n\Translator;
@@ -69,8 +70,8 @@ class CmsService implements CmsServiceInterface
     public function loadBlock($block)
     {
         // build file name
-        $fileName = APPLICATION_ROOT . '/data/cms/' . $block . '.html';
-        
+        $fileName = APPLICATION_ROOT . '/data/cms/' . Locale::getDefault() . '_' . $block . '.html';
+
         // check file
         if (!file_exists($fileName)) {
             return '';
@@ -142,8 +143,8 @@ class CmsService implements CmsServiceInterface
     public function saveBlock($block, $content)
     {
         // build file name
-        $fileName = APPLICATION_ROOT . '/data/cms/' . $block . '.html';
-    
+        $fileName = APPLICATION_ROOT . '/data/cms/' . Locale::getDefault() . '_' . $block . '.html';
+
         // write data to file
         file_put_contents($fileName, $content);
         

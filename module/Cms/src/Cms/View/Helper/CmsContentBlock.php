@@ -92,7 +92,7 @@ class CmsContentBlock extends AbstractHelper
         );
         
         // set form action 
-        $action = $this->getView()->url('cms', array('action' => 'save'));
+        $action = $this->getView()->url('cms', array('action' => 'save'), true);
         
         // get content block form
         $form = $this->getCmsService()->getForm($block, $url);

@@ -50,9 +50,9 @@ class ApplicationListener implements ListenerAggregateInterface
             -100
         );
         $this->listeners[] = $events->attach(
-            MvcEvent::EVENT_DISPATCH, 
+            MvcEvent::EVENT_DISPATCH,
             array($this, 'setupLocalization'),
-            -100
+            100
         );
         $this->listeners[] = $events->attach(
             MvcEvent::EVENT_DISPATCH, 

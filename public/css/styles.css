@@ -1,5 +1,7 @@
 @CHARSET "UTF-8";
 
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:700);
+
 body {
     padding-top: 56px;
     padding-bottom: 0px;
@@ -204,6 +206,9 @@ img.pull-right {
 
 .navbar .brand {
     padding: 10px 20px;
+    color: #69b44a;
+    font-weight: bold;
+    font-family: 'Open Sans', Helvetica, "Arial Black";
 }
 
 .unstyled.footernav li {

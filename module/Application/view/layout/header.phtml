@@ -22,7 +22,7 @@
 <span class="icon-bar"></span>
 <span class="icon-bar"></span>
 </a>
-<a class="brand" href="/"><?php echo $this->translate('application_menu_index'); ?></a>
+<a class="brand" href="<?php echo $this->url('home', array(), true); ?>"><span class="icon-comments-alt"></span> <?php echo $this->translate('application_menu_index'); ?></a>
 <div class="nav-collapse">
 <?php
 $this->navigation('navigation')->menu()->setUlClass('nav navbar-nav');

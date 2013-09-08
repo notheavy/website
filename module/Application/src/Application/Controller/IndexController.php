@@ -12,6 +12,7 @@
  */
 namespace Application\Controller;
 
+use Locale;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
@@ -29,6 +30,11 @@ class IndexController extends AbstractActionController
      */
     public function indexAction()
     {
+        if (is_null($this->params()->fromRoute('lang')))
+        {
+            return $this->redirect()->toRoute('home', array('lang' => 'de'));
+        }
+
         return new ViewModel();
     }
 }

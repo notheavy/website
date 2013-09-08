@@ -118,7 +118,7 @@ class UserShowWidget extends AbstractHelper
     {
         // check url
         if (   $this->getView()->url('user', array(), array(), true) 
-            == $this->getView()->url('user', array('action' => 'login'))) 
+            == $this->getView()->url('user', array('action' => 'login'), true))
         {
             return '';
         }
