@@ -4,7 +4,7 @@
  *
  * @package    User
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -33,7 +33,7 @@ class UserFilter extends InputFilter
                 array(
                     'name'    => 'InArray',
                     'options' => array(
-                        'haystack' => array('guest', 'customer', 'staff', 'admin'),
+                        'haystack' => array('guest', 'participant', 'staff', 'admin'),
                     ),
                 ),
             ),
@@ -50,7 +50,7 @@ class UserFilter extends InputFilter
                     'name'    => 'EmailAddress',
                     'options' => array(
                         'useDomainCheck' => false,
-                        'message'        => 'Keine gültige E-Mail-Adresse',
+                        'message'        => 'user_message_email_invalid',
                     ),
                 ),
             ),
@@ -69,7 +69,7 @@ class UserFilter extends InputFilter
                         'encoding' => 'UTF-8', 
                         'min'      => 5, 
                         'max'      => 128,
-                        'message'  => 'Passwort muss mindestens 5 Zeichen lang sein',
+                        'message'  => 'user_message_password_invalid',
                     ),
                 ),
             ),

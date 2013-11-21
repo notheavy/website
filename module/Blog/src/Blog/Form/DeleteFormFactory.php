@@ -4,7 +4,7 @@
  *
  * @package    Blog
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -34,8 +34,8 @@ class DeleteFormFactory implements FactoryInterface
         $form = new BlogForm('delete');
         $form->addIdElement();
         $form->addCsrfElement();
-        $form->addSubmitElement('delete', 'Löschen');
-        $form->addSubmitElement('cancel', 'Abbrechen');
+        $form->addSubmitElement('delete', 'blog_button_delete');
+        $form->addSubmitElement('cancel', 'blog_button_cancel');
         $form->setInputFilter($inputFilterManager->get('Blog\Filter\Blog'));
         $form->setValidationGroup(array('id', 'delete', 'cancel'));
         return $form;

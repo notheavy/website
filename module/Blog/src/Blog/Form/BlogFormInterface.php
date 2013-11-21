@@ -4,7 +4,7 @@
  *
  * @package    Blog
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -49,5 +49,5 @@ interface BlogFormInterface extends FormInterface
     /**
      * Add submit element
      */
-    public function addSubmitElement($name = 'save', $label = 'Speichern');
+    public function addSubmitElement($name = 'save', $label = 'blog_button_save');
 }

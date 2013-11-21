@@ -4,7 +4,7 @@
  *
  * @package    Blog
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -13,13 +13,13 @@
  * @package    Blog
  */
 
-$this->headTitle('Blogbeitrag anlegen');
-$this->pageTitle('Einen neuen Blogbeitrag anlegen');
+$this->headTitle('blog_head_create');
+$this->pageTitle('blog_page_create');
 
 $this->headScript()->appendFile(
     $this->basePath() . '/js/ckeditor/ckeditor.js', 'text/javascript'
 );
 
-$actionUrl = $this->url('blog-admin/action', array('action' => 'create'));
+$actionUrl = $this->url('blog-admin/action', array('action' => 'create'), true);
 
 echo $this->showForm($this->form, $actionUrl, 'form-horizontal');

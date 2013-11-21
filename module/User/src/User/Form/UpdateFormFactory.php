@@ -4,7 +4,7 @@
  *
  * @package    User
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -42,13 +42,10 @@ class UpdateFormFactory implements FactoryInterface
         $form->addPassElement();
         $form->addFirstnameElement();
         $form->addLastnameElement();
-        $form->addSubmitElement('save', 'Speichern');
-        $form->addSubmitElement('cancel', 'Abbrechen');
+        $form->addSubmitElement('save', 'user_button_save');
+        $form->addSubmitElement('cancel', 'user_button_cancel');
         $form->setInputFilter($inputFilterManager->get('User\Filter\User'));
-        $form->setValidationGroup(array(
-            'id', 'role', 'email', 'pass', 'firstname', 'lastname', 
-            'save', 'cancel'
-        ));
+        $form->setValidationGroup(array('id', 'role', 'email', 'pass', 'firstname', 'lastname', 'save', 'cancel'));
         return $form;
     }
 }

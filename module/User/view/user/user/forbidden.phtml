@@ -4,7 +4,7 @@
  *
  * @package    User
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -13,38 +13,10 @@
  * @package    User
  */
 
-$this->headTitle('Zugriff nicht erlaubt');
-$this->pageTitle('Du kommst hier nicht rein!');
+$this->headTitle('user_head_forbidden');
+$this->pageTitle('user_page_forbidden');
+
 ?>
-<p>Leider dürfen Sie diese Seite nicht aufrufen. Da sind uns echt die Hände gebunden und wir dürfen keine Ausnahmen machen.</p>
-<table class="table-images">
-	<tbody>
-		<tr>
-			<td>
-			<p style="text-align: center;"><img alt="Luigi" class="thumbnail span2" src="/img/team/luigi.png" /></p>
+<p><?php echo $this->translate('user_message_auth_forbidden'); ?></p>
 
-			<p style="text-align: center;">Luigi Bartoli<br />
-			Chef</p>
-			</td>
-			<td>
-			<p style="text-align: center;"><img alt="Francesca" class="thumbnail span2" src="/img/team/francesca.png" /></p>
-
-			<p style="text-align: center;">Francesca Bartoli<br />
-			Service</p>
-			</td>
-			<td>
-			<p style="text-align: center;"><img alt="Alessandro" class="thumbnail span2" src="/img/team/alessandro.png" /></p>
-
-			<p style="text-align: center;">Alessandro Altobelli<br />
-			Koch</p>
-			</td>
-			<td>
-			<p style="text-align: center;"><img alt="Valentina" class="thumbnail span2" src="/img/team/valentina.png" /></p>
-
-			<p style="text-align: center;">Valentina Rossi<br />
-			K&ouml;chin</p>
-			</td>
-		</tr>
-	</tbody>
-</table>
-<p class="pull-center"><a href="/" class="btn">Zur Startseite</a></p>
+<p class="pull-center"><a href="/" class="btn"><?php echo $this->translate('application_button_home') ?></a></p>

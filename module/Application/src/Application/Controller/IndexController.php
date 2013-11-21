@@ -4,7 +4,7 @@
  *
  * @package    Application
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -12,6 +12,7 @@
  */
 namespace Application\Controller;
 
+use Locale;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
@@ -29,6 +30,11 @@ class IndexController extends AbstractActionController
      */
     public function indexAction()
     {
+        if (is_null($this->params()->fromRoute('lang')))
+        {
+            return $this->redirect()->toRoute('home', array('lang' => 'de'));
+        }
+
         return new ViewModel();
     }
 }

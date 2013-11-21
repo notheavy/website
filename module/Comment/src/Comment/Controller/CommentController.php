@@ -4,7 +4,7 @@
  *
  * @package    Comment
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -70,7 +70,7 @@ class CommentController extends AbstractActionController
         // prepare Post/Redirect/Get Plugin
         $prg = $this->prg(
             $this->url()->fromRoute(
-                'comment', array('action' => 'add')
+                'comment', array('action' => 'add'), true
             ), 
             true
         );

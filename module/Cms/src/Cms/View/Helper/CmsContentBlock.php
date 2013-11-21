@@ -4,7 +4,7 @@
  *
  * @package    Cms
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -60,11 +60,14 @@ class CmsContentBlock extends AbstractHelper
     {
         return $this->cmsService;
     }
-    
+
     /**
      * Returns itself
      *
-     * @return Cms 
+     * @param $block
+     * @param $url
+     *
+     * @return Cms
      */
     public function __invoke($block, $url)
     {
@@ -89,7 +92,7 @@ class CmsContentBlock extends AbstractHelper
         );
         
         // set form action 
-        $action = $this->getView()->url('cms', array('action' => 'save'));
+        $action = $this->getView()->url('cms', array('action' => 'save'), true);
         
         // get content block form
         $form = $this->getCmsService()->getForm($block, $url);

@@ -4,7 +4,7 @@
  *
  * @package    Application
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -52,6 +52,38 @@ class AboutController extends AbstractActionController
      * Handle contact page
      */
     public function contactAction()
+    {
+        return new ViewModel();
+    }
+
+    /**
+     * Handle speaker page
+     */
+    public function speakerAction()
+    {
+        return new ViewModel();
+    }
+
+    /**
+     * Handle sessions page
+     */
+    public function sessionsAction()
+    {
+        return new ViewModel();
+    }
+
+    /**
+     * Handle tickets page
+     */
+    public function ticketsAction()
+    {
+        return new ViewModel();
+    }
+
+    /**
+     * Handle location page
+     */
+    public function locationAction()
     {
         return new ViewModel();
     }

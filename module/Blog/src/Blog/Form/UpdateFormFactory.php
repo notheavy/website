@@ -4,7 +4,7 @@
  *
  * @package    Blog
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -37,8 +37,8 @@ class UpdateFormFactory implements FactoryInterface
         $form->addTitleElement();
         $form->addTeaserElement();
         $form->addContentElement();
-        $form->addSubmitElement('save', 'Speichern');
-        $form->addSubmitElement('cancel', 'Abbrechen');
+        $form->addSubmitElement('save', 'blog_button_save');
+        $form->addSubmitElement('cancel', 'blog_button_cancel');
         $form->setInputFilter($inputFilterManager->get('Blog\Filter\Blog'));
         $form->setValidationGroup(
             array('id', 'title', 'teaser', 'content', 'save', 'cancel')

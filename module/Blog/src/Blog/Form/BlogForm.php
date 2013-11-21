@@ -4,7 +4,7 @@
  *
  * @package    Blog
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -50,7 +50,7 @@ class BlogForm extends Form implements BlogFormInterface
     public function addTitleElement($name = 'title')
     {
         $element = new Text($name);
-        $element->setLabel('Überschrift');
+        $element->setLabel('blog_label_title');
         $element->setAttribute('class', 'span5');
         $this->add($element);
     }
@@ -61,7 +61,7 @@ class BlogForm extends Form implements BlogFormInterface
     public function addTeaserElement($name = 'teaser')
     {
         $element = new Textarea($name);
-        $element->setLabel('Anreißer');
+        $element->setLabel('blog_label_teaser');
         $element->setAttribute('class', 'ckeditor');
         $this->add($element);
     }
@@ -72,7 +72,7 @@ class BlogForm extends Form implements BlogFormInterface
     public function addContentElement($name = 'content')
     {
         $element = new Textarea($name);
-        $element->setLabel('Beitragstext');
+        $element->setLabel('blog_label_content');
         $element->setAttribute('class', 'ckeditor');
         $this->add($element);
     }
@@ -80,7 +80,7 @@ class BlogForm extends Form implements BlogFormInterface
     /**
      * Add submit element
      */
-    public function addSubmitElement($name = 'save', $label = 'Speichern')
+    public function addSubmitElement($name = 'save', $label = 'blog_button_save')
     {
         $element = new Submit($name);
         $element->setValue($label);

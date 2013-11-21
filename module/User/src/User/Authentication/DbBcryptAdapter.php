@@ -4,7 +4,7 @@
  *
  * @package    User
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -199,15 +199,13 @@ class DbBcryptAdapter implements AdapterInterface
         
         // check for identity
         if (!$this->getIdentity()) {
-            $this->authenticateResultInfo['messages'][] = 
-                'Sie haben keine E-Mail Adresse eingegeben!';
+            $this->authenticateResultInfo['messages'][] = 'user_message_auth_email_missing';
             return $this->createResult();
         }
         
         // check for credential
         if (!$this->getCredential()) {
-            $this->authenticateResultInfo['messages'][] = 
-                'Sie haben kein Passwort eingegeben!';
+            $this->authenticateResultInfo['messages'][] = 'user_message_auth_password_missing';
             return $this->createResult();
         }
         
@@ -216,10 +214,8 @@ class DbBcryptAdapter implements AdapterInterface
         
         // check user
         if (!$user) {
-            $this->authenticateResultInfo['code'      ] = 
-                Result::FAILURE_IDENTITY_NOT_FOUND;
-            $this->authenticateResultInfo['messages'][] = 
-                'Es gibt keinen Benutzer für die E-Mail Adresse!';
+            $this->authenticateResultInfo['code'      ] = Result::FAILURE_IDENTITY_NOT_FOUND;
+            $this->authenticateResultInfo['messages'][] = 'user_message_auth_user_unknown';
             return $this->createResult();
         }
         
@@ -229,10 +225,8 @@ class DbBcryptAdapter implements AdapterInterface
         
         // check password
         if (!$verify) {
-            $this->authenticateResultInfo['code'      ] = 
-                Result::FAILURE_CREDENTIAL_INVALID;
-            $this->authenticateResultInfo['messages'][] = 
-                'Das Passwort ist falsch!';
+            $this->authenticateResultInfo['code'      ] = Result::FAILURE_CREDENTIAL_INVALID;
+            $this->authenticateResultInfo['messages'][] = 'user_message_auth_password_wrong';
             return $this->createResult();
         }
         
@@ -242,8 +236,7 @@ class DbBcryptAdapter implements AdapterInterface
         // successful
         $this->authenticateResultInfo['code'      ] = Result::SUCCESS;
         $this->authenticateResultInfo['identity'  ] = $user;
-        $this->authenticateResultInfo['messages'][] = 
-            'Sie haben sich erfolgreich angemeldet!';
+        $this->authenticateResultInfo['messages'][] = 'user_message_auth_login_successful';
         return $this->createResult();
     }
 }

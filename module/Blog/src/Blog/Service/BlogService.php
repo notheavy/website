@@ -4,7 +4,7 @@
  *
  * @package    Blog
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -236,10 +236,10 @@ class BlogService implements
         // get form and set data
         $form = $this->getForm($mode);
         $form->setData($data);
-        
+
         // check for invalid data
         if (!$form->isValid()) {
-            $this->setMessage('Bitte Eingaben überprüfen!');
+            $this->setMessage('application_message_check_input');
             return false;
         }
         
@@ -266,7 +266,7 @@ class BlogService implements
                 $this->getTable()->update($saveData, array('id' => $id));
             }
         } catch (InvalidQueryException $e) {
-            $this->setMessage('Blogbeitrag wurde nicht gespeichert!');
+            $this->setMessage('blog_message_saving_failed');
             return false;
         }
 
@@ -274,7 +274,7 @@ class BlogService implements
         $blog = $this->fetchSingleById($id);
         
         // set success message
-        $this->setMessage('Blogbeitrag wurde gespeichert!');
+        $this->setMessage('blog_message_saving_successful');
         
         // return blog
         return $blog;
@@ -284,7 +284,6 @@ class BlogService implements
      * Delete existing blog
      *
      * @param integer $id blog id
-     * @param array $data input data
      * @return BlogEntityInterface
      */
     public function delete($id)
@@ -300,7 +299,7 @@ class BlogService implements
         }
 
         // set success message
-        $this->setMessage('Der Blogbeitrag wurde gelöscht!');
+        $this->setMessage('blog_message_deleting_successful');
         
         // return result
         return true;

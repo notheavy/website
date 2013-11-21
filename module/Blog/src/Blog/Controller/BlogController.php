@@ -4,7 +4,7 @@
  *
  * @package    Blog
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -105,25 +105,28 @@ class BlogController extends AbstractActionController
         
         // get blog entries
         $blogList = $this->getBlogService()->fetchList($page, $maxPage);
+
+        // get translator
+        $translator = $this->getServiceLocator()->get('translator');
         
         // create feed
         $feed = new Feed();
-        $feed->setTitle('Luigis Pizza-Blog');
-        $feed->setFeedLink('http://luigis-pizza.local/blog/rss', 'atom');
+        $feed->setTitle($translator->translate('application_head_index') . ' - ' . $translator->translate('blog_head_list'));
+        $feed->setFeedLink($this->url()->fromRoute('blog/rss', array(), true), 'atom');
         $feed->addAuthor(array(
-            'name'  => 'Luigi Bartoli',
-            'email' => 'luigi@luigis-pizza.de',
-            'uri'   => 'http://luigis-pizza.local',
+            'name'  => $translator->translate('application_head_index'),
+            'email' => 'info@zf-together.com',
+            'uri'   => 'http://www.zf-together.com',
         ));
-        $feed->setDescription('Luigis Pizza-Blog Beiträge');
-        $feed->setLink('http://luigis-pizza.local');
+        $feed->setDescription($translator->translate('application_head_index') . ' - ' . $translator->translate('blog_head_list'));
+        $feed->setLink('http://www.zf-together.com');
         $feed->setDateModified(time());
         
         // add blog entries
         foreach ($blogList as $blog) {
             $entry = $feed->createEntry();
             $entry->setTitle($blog->getTitle());
-            $entry->setLink('http://luigis-pizza.local/blog/' . $blog->getUrl());
+            $entry->setLink($this->url()->fromRoute('blog/action', array('url' => '$blog->getUrl()'), true));
             $entry->setDescription($blog->getContent());
             $entry->setDateCreated(strtotime($blog->getCdate()));
             
@@ -133,7 +136,7 @@ class BlogController extends AbstractActionController
         // create feed model
         $feedmodel = new FeedModel();
         $feedmodel->setFeed($feed);
-        
+
         return $feedmodel;
     }
 }

@@ -4,7 +4,7 @@
  *
  * @package    Comment
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -37,7 +37,7 @@ class CommentFilter extends InputFilter
                     'name'    => 'EmailAddress',
                     'options' => array(
                         'useDomainCheck' => false, 
-                        'message'        => 'Keine gültige E-Mail-Adresse',
+                        'message'        => 'comment_message_email_invalid',
                     ),
                 ),
             ),
@@ -55,7 +55,7 @@ class CommentFilter extends InputFilter
                     'name'    => 'StringLength',
                     'options' => array(
                         'encoding' => 'UTF-8', 'min' => 5, 'max' => 128,
-                        'message'  => 'Name nur 5 - 128 Zeichen erlaubt',
+                        'message'  => 'comment_message_name_length',
                     ),
                 ),
             ),

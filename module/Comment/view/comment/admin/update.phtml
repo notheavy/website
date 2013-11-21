@@ -4,7 +4,7 @@
  *
  * @package    Comment
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -18,8 +18,8 @@ use Comment\Entity\CommentEntity;
  * @package    Comment
  */
 
-$this->headTitle('Kommentar bearbeiten');
-$this->pageTitle('Einen Kommentar bearbeiten');
+$this->headTitle('comment_head_update');
+$this->pageTitle('comment_page_update');
 
 $this->headScript()->appendFile(
     $this->basePath() . '/js/ckeditor/ckeditor.js', 'text/javascript'
@@ -33,11 +33,11 @@ $url = $comment->getUrl();
 <table class="table table-data">
 <tbody>
 <tr>
-<th>Datum &nbsp;</th>
+<th><?php echo $this->translate('comment_label_date'); ?> &nbsp;</th>
 <td><?php echo $this->date($comment->getCdate()); ?></td>
 </tr>
 <tr>
-<th>Url &nbsp;</th>
+<th><?php echo $this->translate('comment_label_url'); ?> &nbsp;</th>
 <td><a href="<?php echo $url; ?>"><?php echo $url; ?></a></td>
 </tr>
 </tbody>

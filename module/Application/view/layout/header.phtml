@@ -4,12 +4,12 @@
  *
  * @package    Application
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
  * Header view script
- * 
+ *
  * @package    Application
  */
 
@@ -22,17 +22,26 @@
 <span class="icon-bar"></span>
 <span class="icon-bar"></span>
 </a>
-<a class="brand" href="/">
-<img src="/img/luigis-pizza-logo-menu.gif" alt="Zend\Together" />
-</a>
+<a class="brand" href="<?php echo $this->url('home', array(), true); ?>"><span class="icon-comments-alt"></span> <?php echo $this->translate('application_menu_index'); ?></a>
 <div class="nav-collapse">
-<?php 
-$this->navigation('navigation')->menu()->setUlClass('nav');
-echo $this->navigation('navigation')->menu()->renderMenu(
-    null, array('maxDepth' => 0)
-);
+<?php
+$this->navigation('navigation')->menu()->setUlClass('nav navbar-nav');
+echo $this->bootstrapMenu($this->navigation('navigation')->menu()->renderMenu(null, array('maxDepth' => 1)));
 ?>
 </div>
+<ul class="nav pull-right">
+    <li class="dropdown">
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle"><?php echo $this->translate('application_menu_language'); ?> <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li <?php if ($this->lang == 'de') { echo 'class="active"'; } ?>>
+                <a href="<?php echo $this->url(null, array('lang' => 'de'), true); ?>"><?php echo $this->translate('application_menu_german'); ?></a>
+            </li>
+            <li <?php if ($this->lang == 'en') { echo 'class="active"'; } ?>>
+                <a href="<?php echo $this->url(null, array('lang' => 'en'), true); ?>"><?php echo $this->translate('application_menu_english'); ?></a>
+            </li>
+        </ul>
+    </li>
+</ul>
 </div>
 </div>
 </div>

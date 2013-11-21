@@ -4,51 +4,88 @@
  *
  * @package    Application
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
  * Footer view script
- * 
+ *
  * @package    Application
  */
 ?>
 <footer>
-<div class="container">
-<div class="row">
-<div class="span3">
-<h4>Service</h4>
-<ul class="unstyled">
-<li><a href="<?php echo $this->url('application', array('controller' => 'about'))?>">Über uns</a></li>
-<li><a href="<?php echo $this->url('application', array('controller' => 'about', 'action' => 'team'))?>">Team</a></li>
-<li><a href="<?php echo $this->url('application', array('controller' => 'about', 'action' => 'contact'))?>">Kontakt</a></li>
-<li><a href="<?php echo $this->url('application', array('controller' => 'about', 'action' => 'imprint'))?>">Impressum</a></li>
-</ul>
-</div>
-<div class="span3">
-<h4>Links</h4>
-<ul class="unstyled">
-<li><a href="#" target="_blank">###########</a></li>
-<li><a href="#" target="_blank">###########</a></li>
-<li><a href="#" target="_blank">###########</a></li>
-<li><a href="#" target="_blank">###########</a></li>
-</ul>
-</div>
-<div class="span3">
-<h4>Social Media</h4>
-<ul class="unstyled">
-<li><i class="icon-rss"></i>RSS Feed</li>
-<li><i class="icon-facebook"></i>Facebook Fanseite</li>
-<li><i class="icon-google-plus"></i>Google+ Seite</li>
-<li><i class="icon-twitter"></i>Twitter</li>
-</ul>
-</div>
-<div class="span3">
-<h4>Zend\Together wird präsentiert von</h4>
-<img src="/img/luigis-pizza-logo-footer.gif" alt="Zend\Together" />
-</div>
-</div>
-</div>
+    <div class="container">
+        <div class="row">
+            <div class="span3">
+                <h5><?php echo $this->translate('application_menu_service'); ?></h5>
+                <ul class="unstyled">
+                    <li>
+                        <a href="<?php echo $this->url('application', array('controller' => 'about', 'action' => 'speaker'), true) ?>">
+                            <?php echo $this->translate('application_menu_speaker'); ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo $this->url('application', array('controller' => 'about', 'action' => 'sessions'), true) ?>">
+                            <?php echo $this->translate('application_menu_sessions'); ?>
+                        </a>
+                    <li>
+                        <a href="<?php echo $this->url('application', array('controller' => 'about', 'action' => 'location'), true) ?>">
+                            <?php echo $this->translate('application_menu_location'); ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo $this->url('application', array('controller' => 'about', 'action' => 'tickets'), true) ?>">
+                            <?php echo $this->translate('application_menu_tickets'); ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo $this->url('application', array('controller' => 'about', 'action' => 'imprint'), true) ?>">
+                            <?php echo $this->translate('application_menu_imprint'); ?>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="span3">
+                <h5><?php echo $this->translate('application_menu_socialmedia'); ?></h5>
+                <ul class="unstyled">
+                    <li>
+                        <a href="#">
+                            <span class="icon-facebook-sign"></span><?php echo $this->translate('application_menu_facebook'); ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon-google-plus-sign"></span><?php echo $this->translate('application_menu_googleplus'); ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon-twitter-sign"></span><?php echo $this->translate('application_menu_twitter'); ?>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="span3">
+                <h5><?php echo $this->translate('application_menu_links'); ?></h5>
+                <ul class="unstyled">
+                    <li>
+                        <a href="#">
+                            <?php echo $this->translate('application_menu_zendframework'); ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            ...
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="span3">
+                <h5><?php echo $this->translate('application_menu_poweredby'); ?></h5>
+                Hier nochmal ein paar Logos und so einbinden?
+            </div>
+        </div>
+    </div>
 </footer>
-<br />
-<br />
+<br/>
+<br/>

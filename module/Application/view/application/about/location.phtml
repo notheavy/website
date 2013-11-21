@@ -1,0 +1,20 @@
+<?php 
+/**
+ * Website Zend\Together
+ *
+ * @package    Application
+ * @author     Ralf Eggert <r.eggert@travello.de>
+ * @link       http://www.zf-together.com
+ */
+
+/**
+ * Location view script
+ * 
+ * @package    Application
+ */
+
+$this->headTitle('application_head_location');
+
+$url = $this->url('application', array(), array(), true);
+
+echo $this->cmsContentBlock('application_about_location', $url);

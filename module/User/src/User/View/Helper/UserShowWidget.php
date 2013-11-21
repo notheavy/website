@@ -4,7 +4,7 @@
  *
  * @package    User
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -39,7 +39,8 @@ class UserShowWidget extends AbstractHelper
     /**
      * Constructor
      *
-     * @param  UserEntityInterface $identity
+     * @param  UserEntityInterface               $identity
+     * @param \User\Service\UserServiceInterface $userService
      */
     public function __construct(
         UserEntityInterface $identity = null, 
@@ -117,7 +118,7 @@ class UserShowWidget extends AbstractHelper
     {
         // check url
         if (   $this->getView()->url('user', array(), array(), true) 
-            == $this->getView()->url('user', array('action' => 'login'))) 
+            == $this->getView()->url('user', array('action' => 'login'), true))
         {
             return '';
         }

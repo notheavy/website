@@ -4,7 +4,7 @@
  *
  * @package    User
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -20,11 +20,11 @@ namespace User\Entity;
 class UserEntity implements UserEntityInterface
 {
     protected $roleNames = array(
-        'customer' => 'Kunde',
-        'staff'    => 'Mitarbeiter',
-        'admin'    => 'Administrator'
+        'participant' => 'comment_option_role_participant',
+        'staff'       => 'comment_option_role_staff',
+        'admin'       => 'comment_option_role_admin'
     );
-    
+
     protected $id;
     protected $role;
     protected $email;

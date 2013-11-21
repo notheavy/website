@@ -4,7 +4,7 @@
  *
  * @package    User
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -33,7 +33,7 @@ class LogoutFormFactory implements FactoryInterface
         
         $form = new UserForm('logout');
         $form->addCsrfElement();
-        $form->addSubmitElement('logout', 'Abmelden');
+        $form->addSubmitElement('logout', 'user_button_logout');
         $form->setInputFilter($inputFilterManager->get('User\Filter\User'));
         $form->setValidationGroup(array('logout'));
         return $form;

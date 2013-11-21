@@ -4,7 +4,7 @@
  *
  * @package    Application
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -13,18 +13,8 @@
  * @package    Application
  */
 
-$this->headTitle('Herzlich Willkommen');
-$this->pageTitle('Herzlich Willkommen bei');
+$this->headTitle('application_head_home');
 
-$url = $this->url('home');
-?>
-<img src="/img/luigis-pizza-logo.gif" alt="Zend\Together" /><br />
-<br />
-<?php if ($this->getHelperPluginManager()->has('pizzaShowCarousel')) : ?>
-<?php echo $this->pizzaShowCarousel(); ?>
-<?php else : ?>
-Hier könnte dann was stehen
-<?php endif; ?>
-<?php 
+$url = $this->url('home', array(), array(), true);
+
 echo $this->cmsContentBlock('application_index_index', $url);
-?>

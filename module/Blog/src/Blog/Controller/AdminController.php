@@ -4,7 +4,7 @@
  *
  * @package    Blog
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -78,7 +78,7 @@ class AdminController extends AbstractActionController
         // prepare Post/Redirect/Get Plugin
         $prg = $this->prg(
             $this->url()->fromRoute(
-                'blog-admin/action', array('action' => 'create')
+                'blog-admin/action', array('action' => 'create'), true
             ), 
             true
         );

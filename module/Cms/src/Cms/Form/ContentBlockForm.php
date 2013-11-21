@@ -4,7 +4,7 @@
  *
  * @package    Cms
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -37,7 +37,7 @@ class ContentBlockForm extends Form implements ContentBlockFormInterface
      * Add button element
      */
     public function addButtonElement(
-        $name = 'cms_save', $label = 'Speichern', $onClick = '',
+        $name = 'cms_save', $label = 'cms_button_save', $onClick = '',
         $disabled = 'disabled'
     )
     {

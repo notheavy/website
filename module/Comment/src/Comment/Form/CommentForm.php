@@ -4,7 +4,7 @@
  *
  * @package    Comment
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -13,15 +13,12 @@
 namespace Comment\Form;
 
 use Zend\Form\Element\Csrf;
-use Zend\Form\Element\File;
 use Zend\Form\Element\Hidden;
-use Zend\Form\Element\MultiCheckbox;
 use Zend\Form\Element\Select;
 use Zend\Form\Element\Text;
 use Zend\Form\Element\Textarea;
 use Zend\Form\Element\Submit;
 use Zend\Form\Form;
-use Zend\Form\FormInterface;
 
 /**
  * Comment Form
@@ -63,7 +60,7 @@ class CommentForm extends Form implements CommentFormInterface
     public function addStatusElement($options = array(), $name = 'status')
     {
         $element = new Select($name);
-        $element->setLabel('Status');
+        $element->setLabel('comment_label_status');
         $element->setAttribute('class', 'span3');
         $element->setValueOptions($options);
         $this->add($element);
@@ -75,7 +72,7 @@ class CommentForm extends Form implements CommentFormInterface
     public function addEmailElement($email = 'email')
     {
         $element = new Text($email);
-        $element->setLabel('E-Mail-Adresse');
+        $element->setLabel('comment_label_email');
         $element->setAttribute('class', 'span3');
         $this->add($element);
     }
@@ -86,7 +83,7 @@ class CommentForm extends Form implements CommentFormInterface
     public function addNameElement($name = 'name')
     {
         $element = new Text($name);
-        $element->setLabel('Name');
+        $element->setLabel('comment_label_name');
         $element->setAttribute('class', 'span3');
         $this->add($element);
     }
@@ -97,7 +94,7 @@ class CommentForm extends Form implements CommentFormInterface
     public function addMessageElement($name = 'message')
     {
         $element = new Textarea($name);
-        $element->setLabel('Kommentar');
+        $element->setLabel('comment_label_message');
         $element->setAttribute('class', 'ckeditor');
         $element->setAttribute('rows', '12');
         $this->add($element);
@@ -106,7 +103,7 @@ class CommentForm extends Form implements CommentFormInterface
     /**
      * Add submit element
      */
-    public function addSubmitElement($name = 'save', $label = 'Speichern')
+    public function addSubmitElement($name = 'save', $label = 'comment_button_save')
     {
         $element = new Submit($name);
         $element->setValue($label);

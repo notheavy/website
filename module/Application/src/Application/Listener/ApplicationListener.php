@@ -4,7 +4,7 @@
  *
  * @package    Application
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -39,7 +39,8 @@ class ApplicationListener implements ListenerAggregateInterface
      * Attach to an event manager
      *
      * @param  EventManagerInterface $events
-     * @param  integer $priority
+     *
+     * @internal param int $priority
      */
     public function attach(EventManagerInterface $events)
     {
@@ -49,9 +50,9 @@ class ApplicationListener implements ListenerAggregateInterface
             -100
         );
         $this->listeners[] = $events->attach(
-            MvcEvent::EVENT_DISPATCH, 
+            MvcEvent::EVENT_DISPATCH,
             array($this, 'setupLocalization'),
-            -100
+            100
         );
         $this->listeners[] = $events->attach(
             MvcEvent::EVENT_DISPATCH, 
@@ -78,17 +79,19 @@ class ApplicationListener implements ListenerAggregateInterface
     /**
      * Listen to the "render" event and render additional layout segments
      *
-     * @param  MvcEvent $e
+     * @param \Zend\EventManager\EventInterface|\Zend\Mvc\MvcEvent $e
+     *
      * @return null
      */
     public function renderLayoutSegments(EventInterface $e)
     {
         // get view Model
         $viewModel = $e->getViewModel(); /* @var $viewModel ViewModel */
-        
+
         // add an additional header segment to layout
         $header = new ViewModel();
         $header->setTemplate('layout/header');
+        $header->setVariable('lang', Locale::getDefault());
         $viewModel->addChild($header, 'header');
         
         // add an additional sidebar segment to layout
@@ -108,19 +111,29 @@ class ApplicationListener implements ListenerAggregateInterface
     /**
      * Listen to the "dispatch" event and setup the localization
      *
-     * @param  MvcEvent $e
+     * @param \Zend\EventManager\EventInterface|\Zend\Mvc\MvcEvent $e
+     *
      * @return null
      */
-    public function setupLocalization(EventInterface $e)
+    public function setupLocalization(MvcEvent $e)
     {
         // get service manager
         $serviceManager = $e->getApplication()->getServiceManager();
-        $viewManager    = $serviceManager->get('viewmanager');
-        
+
+        // get language
+        $lang = $e->getRouteMatch()->getParam('lang', 'de');
+
         // set locale
-        Locale::setDefault('de_DE');
-        
+        Locale::setDefault($lang);
+
+        // get translator
+        $translator = $serviceManager->get('translator');
+
+        // change language
+        $translator->setLocale(Locale::getDefault());
+
         // setup currency view helper
+        $viewManager    = $serviceManager->get('viewmanager');
         $helper = $viewManager->getRenderer()->plugin('currencyformat');
         $helper->setCurrencyCode('EUR');
         $helper->setShouldShowDecimals(true);
@@ -129,15 +142,16 @@ class ApplicationListener implements ListenerAggregateInterface
     /**
      * Listen to the "dispatch" event and add translation files
      *
-     * @param  MvcEvent $e
+     * @param \Zend\EventManager\EventInterface|\Zend\Mvc\MvcEvent $e
+     *
      * @return null
      */
     public function addValidatorTranslations(EventInterface $e)
     {
         $baseDir = APPLICATION_ROOT . '/module/Application/language';
-        
+
         $translator = Translator::factory(array(
-            'locale'                    => 'de',
+            'locale'                    => Locale::getDefault(),
             'translation_file_patterns' => array(
                 array(
                     'type'        => 'phpArray',
@@ -147,7 +161,7 @@ class ApplicationListener implements ListenerAggregateInterface
                 ),
             )
         ));
-        
+
         AbstractValidator::setDefaultTranslator($translator);
     }
 }

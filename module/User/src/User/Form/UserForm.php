@@ -4,7 +4,7 @@
  *
  * @package    User
  * @author     Ralf Eggert <r.eggert@travello.de>
- * * @link       http://www.zf-together.com
+ * @link       http://www.zf-together.com
  */
 
 /**
@@ -51,7 +51,7 @@ class UserForm extends Form implements UserFormInterface
     public function addRoleElement($options = array(), $name = 'role')
     {
         $element = new Select($name);
-        $element->setLabel('Benutzergruppe');
+        $element->setLabel('user_label_role');
         $element->setValueOptions($options);
         $this->add($element);
     }
@@ -62,7 +62,7 @@ class UserForm extends Form implements UserFormInterface
     public function addEmailElement($name = 'email')
     {
         $element = new Text($name);
-        $element->setLabel('E-Mail Adresse');
+        $element->setLabel('user_label_email');
         $this->add($element);
     }
     
@@ -72,7 +72,7 @@ class UserForm extends Form implements UserFormInterface
     public function addPassElement($name = 'pass')
     {
         $element = new Password($name);
-        $element->setLabel('Passwort');
+        $element->setLabel('user_label_passwort');
         $this->add($element);
     }
     
@@ -82,7 +82,7 @@ class UserForm extends Form implements UserFormInterface
     public function addFirstnameElement($name = 'firstname')
     {
         $element = new Text($name);
-        $element->setLabel('Vorname');
+        $element->setLabel('user_label_firstname');
         $this->add($element);
     }
     
@@ -92,14 +92,14 @@ class UserForm extends Form implements UserFormInterface
     public function addLastnameElement($name = 'lastname')
     {
         $element = new Text($name);
-        $element->setLabel('Nachname');
+        $element->setLabel('user_label_lastname');
         $this->add($element);
     }
     
     /**
      * Add submit element
      */
-    public function addSubmitElement($name = 'save', $label = 'Speichern')
+    public function addSubmitElement($name = 'save', $label = 'user_button_save')
     {
         $element = new Submit($name);
         $element->setValue($label);
